@@ -16,14 +16,39 @@ class Contact {
 		{
 			cout << "enter fst_name: ";
 			getline(cin, fst_name);
+			if (!fst_name.length())
+			{
+				cout << "field cannot be empty !!" << endl;
+				exit (0);
+			}
 			cout << "enter lst_name: ";
 			getline(cin, lst_name);
+			if (!lst_name.length())
+			{
+				cout << "field cannot be empty !!" << endl;
+				exit (0);
+			}
 			cout << "enter nickname: ";
 			getline(cin, nickname);
+			if (!nickname.length())
+			{
+				cout << "field cannot be empty !!" << endl;
+				exit (0);
+			}
 			cout << "enter phone_num: ";
 			getline(cin, phone_num);
+			if (!phone_num.length())
+			{
+				cout << "field cannot be empty !!" << endl;
+				exit (0);
+			}
 			cout << "enter dkst_secret: ";
 			getline(cin, dkst_secret);
+			if (!dkst_secret.length())
+			{
+				cout << "field cannot be empty !!" << endl;
+				exit (0);
+			}
 		}
 		void	PrintContact(int idx)
 		{
@@ -66,14 +91,18 @@ class PhoneBook {
 			{
 				int	tmp = cnt;
 				while (tmp > 7)
-					tmp -= 7;
+					tmp -= 8;
 				Contact[tmp].AddContact();
 			}
-			Contact[cnt].AddContact();
+			else
+				Contact[cnt].AddContact();
 			cnt++;
 		}
 		void	Search()
 		{
+			int	tmp = cnt;
+			while (tmp > 7)
+				tmp -= 8;
 			if (cnt < 8)
 			{
 				for (int i = 0; i < cnt; i++)
@@ -88,8 +117,8 @@ class PhoneBook {
 			cout << "enter idx to display: ";
 			cin >> idx;
 			char	c;
-			cin >> noskipws >>c;
-			if (idx < 0 || idx > cnt)
+			cin >> noskipws >> c;
+			if (idx < 0 || idx > tmp)
 				cout << "idx out of range !" << endl;
 			else
 				Contact[idx].PrintContactLine();
