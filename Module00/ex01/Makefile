@@ -6,19 +6,19 @@
 #    By: daejlee <daejlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 20:51:25 by daejlee           #+#    #+#              #
-#    Updated: 2023/02/18 20:34:51 by daejlee          ###   ########.fr        #
+#    Updated: 2023/02/19 07:35:10 by daejlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -g -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
-INCLUDE = -I./include
+INCLUDE = PhoneBook.hpp
 
-SRCS = megaphone.cpp
+SRCS = main.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
