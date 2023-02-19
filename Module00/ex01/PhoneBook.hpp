@@ -62,7 +62,7 @@ class Contact {
 			else
 				cout << setfill(' ') << setw(10) << lst_name << "|";
 			if (nickname.size() > 9)
-				cout << nickname.substr(0, 9) << "." << "|";
+				cout << nickname.substr(0, 9) << "." << endl;
 			else
 				cout << setfill(' ') << setw(10) << nickname << endl;
 		}
