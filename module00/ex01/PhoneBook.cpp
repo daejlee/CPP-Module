@@ -12,7 +12,7 @@ void	PhoneBook::printIdxLine(void)
 	std::stringstream ss(buf);
 	while (!(ss >> idx))
 	{
-		std::cout << "index must be decimal!" << std::endl;
+		std::cout << "index must be decimal !" << std::endl << "please retype: ";
 		buf = getInput();
 		ss.str("");
 		ss.clear();
@@ -57,7 +57,7 @@ std::string	PhoneBook::getInput(void)
 	std::getline(std::cin, ret);
 	while (!ret.length())
 	{
-		std::cout << "field cannot be empty !!" << std::endl;
+		std::cout << "field cannot be empty !!" << std::endl << "please retype: ";
 		std::cin.clear();
 		clearerr(stdin);
 		std::getline(std::cin, ret);

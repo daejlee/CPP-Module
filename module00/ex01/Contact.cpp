@@ -9,7 +9,7 @@ std::string	Contact::getInput(void)
 	std::getline(std::cin, ret);
 	while (!ret.length())
 	{
-		std::cout << "field cannot be empty !!" << std::endl;
+		std::cout << "field cannot be empty !!" << std::endl << "please retype: ";
 		std::cin.clear();
 		clearerr(stdin);
 		std::getline(std::cin, ret);
