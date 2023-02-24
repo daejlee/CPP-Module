@@ -5,11 +5,13 @@ HumanB::HumanB(std::string input_name)
 {
 	name = input_name;
 	w = new Weapon;
-	w->setType("unarmed");
+	w->setType("unarmed hand");
 }
 
 HumanB::~HumanB()
 {
+	if (!(w->getType().compare("unarmed hand")))
+		delete w;
 	std::cout << "HumanB destroyed." << std::endl;
 }
 
