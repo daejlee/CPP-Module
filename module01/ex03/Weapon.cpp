@@ -11,11 +11,6 @@ Weapon::Weapon(std::string input_type)
 	type = input_type;
 }
 
-Weapon::~Weapon(void)
-{
-	return ;
-}
-
 std::string const	&Weapon::getType(void)
 {
 	return ((std::string const &)type);
