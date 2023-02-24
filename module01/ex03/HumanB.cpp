@@ -1,10 +1,11 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(void)
+HumanB::HumanB(std::string input_name)
 {
-	std::cout << "HumanB created." << std::endl;
-	w.setType("unarmed");
+	name = input_name;
+	w = new Weapon;
+	w->setType("unarmed");
 }
 
 HumanB::~HumanB()
@@ -14,10 +15,11 @@ HumanB::~HumanB()
 
 void	HumanB::attack(void)
 {
-	std::cout << name << " attacks with their " << w.getType() << std::endl;
+	std::cout << name << " attacks with their " << w->getType() << std::endl;
 }
 
-void	HumanB::setWeapon(Weapon init_w)
+void	HumanB::setWeapon(Weapon &init_w)
 {
-	w = init_w;
+	delete w;
+	w = &init_w;
 }

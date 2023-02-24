@@ -3,18 +3,17 @@
 
 Weapon::Weapon(void)
 {
-	std::cout << "Weapon created." << std::endl;
+	return ;
 }
 
 Weapon::Weapon(std::string input_type)
 {
-	std::cout << "Weapon created." << std::endl;
-	type = type;
+	type = input_type;
 }
 
 Weapon::~Weapon(void)
 {
-	std::cout << "Weapon destroyed." << std::endl;
+	return ;
 }
 
 std::string const	&Weapon::getType(void)

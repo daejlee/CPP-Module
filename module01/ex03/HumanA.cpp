@@ -1,16 +1,15 @@
 
 #include "HumanA.hpp"
 
-HumanA::HumanA(Weapon init_w)
+HumanA::HumanA(std::string input_name, Weapon &init_w)
 {
-	w = init_w;
-	name = "HumanA";
-	std::cout << "HumanA created." << std::endl;
+	w = &init_w;
+	name = input_name;
 }
 
 void	HumanA::attack(void)
 {
-	std::cout << name << " attacks with their " << w.getType() << std::endl;
+	std::cout << name << " attacks with their " << w->getType() << std::endl;
 }
 
 HumanA::~HumanA()
