@@ -4,8 +4,7 @@
 Zombie	*newZombie(std::string name)
 {
 	Zombie	*ret;
-	ret = new Zombie;
-	ret->set_name(name);
+	ret = new Zombie(name);
 	ret->announce();
 	return (ret);
 }
