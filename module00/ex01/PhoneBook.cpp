@@ -20,15 +20,40 @@ void	PhoneBook::printIdxLine(void)
 	}
 	if (cnt > 8)
 	{
-		if (idx < 0 || idx > 7)
-			std::cout << "idx out of range !" << std::endl;
-		else
-			Contact[idx].printContactLine();
+		while (idx < 0 || idx > 7)
+		{
+			std::cout << "idx out of range !" << std::endl << "please retype: ";
+			buf = getInput();
+			ss.str("");
+			ss.clear();
+			ss.str(buf);
+			while (!(ss >> idx))
+			{
+				std::cout << "index must be decimal !" << std::endl << "please retype: ";
+				buf = getInput();
+				ss.str("");
+				ss.clear();
+				ss.str(buf);
+			}
+		}
 	}
-	else if (idx < 0 || idx >= cnt)
-		std::cout << "idx out of range !" << std::endl;
-	else
-		Contact[idx].printContactLine();
+	while (idx < 0 || idx >= cnt)
+	{
+		std::cout << "idx out of range !" << std::endl << "please retype: ";
+		buf = getInput();
+		ss.str("");
+		ss.clear();
+		ss.str(buf);
+		while (!(ss >> idx))
+		{
+			std::cout << "index must be decimal !" << std::endl << "please retype: ";
+			buf = getInput();
+			ss.str("");
+			ss.clear();
+			ss.str(buf);
+		}
+	}
+	Contact[idx].printContactLine();
 }
 
 void	PhoneBook::printContactLst(void)
