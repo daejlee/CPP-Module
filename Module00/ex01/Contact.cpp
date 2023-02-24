@@ -1,37 +1,37 @@
 
 #include "Contact.hpp"
 
-void	Contact::InvalidInput()
+std::string	Contact::getInput(void)
 {
-	std::cout << "field cannot be empty !!" << std::endl;
-	exit (0);
+	std::string	ret;
+	std::cin.clear();
+	clearerr(stdin);
+	std::getline(std::cin, ret);
+	while (!ret.length())
+	{
+		std::cout << "field cannot be empty !!" << std::endl;
+		std::cin.clear();
+		clearerr(stdin);
+		std::getline(std::cin, ret);
+	}
+	return (ret);
 }
 
-void	Contact::AddContact()
+void	Contact::addContact(void)
 {
 	std::cout << "enter fst_name: ";
-	std::getline(std::cin, fst_name);
-	if (!fst_name.length())
-		InvalidInput();
+	fst_name = getInput();
 	std::cout << "enter lst_name: ";
-	std::getline(std::cin, lst_name);
-	if (!lst_name.length())
-		InvalidInput();
+	lst_name = getInput();
 	std::cout << "enter nickname: ";
-	std::getline(std::cin, nickname);
-	if (!nickname.length())
-		InvalidInput();
+	nickname = getInput();
 	std::cout << "enter phone_num: ";
-	std::getline(std::cin, phone_num);
-	if (!phone_num.length())
-		InvalidInput();
+	phone_num = getInput();
 	std::cout << "enter dkst_secret: ";
-	std::getline(std::cin, dkst_secret);
-	if (!dkst_secret.length())
-		InvalidInput();
+	dkst_secret = getInput();
 }
 
-void	Contact::PrintContact(int idx)
+void	Contact::printContact(int idx)
 {
 	std::cout << std::setfill(' ') << std::setw(10) << idx << "|";
 	if (fst_name.size() > 9)
@@ -48,7 +48,7 @@ void	Contact::PrintContact(int idx)
 		std::cout << std::setfill(' ') << std::setw(10) << nickname << std::endl;
 }
 
-void	Contact::PrintContactLine()
+void	Contact::printContactLine(void)
 {
 	std::cout << "fst_name: " << fst_name << std::endl;
 	std::cout << "lst_name: " << lst_name << std::endl;

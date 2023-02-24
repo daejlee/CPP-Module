@@ -4,15 +4,16 @@
 
 class PhoneBook {
 	private:
-		int	cnt;
-		Contact Contact[8];
+		int			cnt;
+		Contact		Contact[8];
+		void		printIdxLine(void);
+		void		printContactLst(void);
 	public:
-		void	init(void);
-		void	Add(void);
-		void	PrintIdxLine(void);
-		void	PrintContactList(void);
-		void	Search(void);
-		void	Exit(void);
+					PhoneBook(void);
+		std::string	getInput(void);
+		void		Add(void);
+		void		Search(void);
+		void		Exit(void);
 };
 
 #endif

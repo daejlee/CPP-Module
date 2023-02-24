@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <sstream>
 
 class Contact {
 	private:
@@ -13,10 +14,10 @@ class Contact {
 		std::string	phone_num;
 		std::string	dkst_secret;
 	public:
-		void	InvalidInput(void);
-		void	AddContact(void);
-		void	PrintContact(int idx);
-		void	PrintContactLine(void);
+		std::string	getInput(void);
+		void		addContact(void);
+		void		printContact(int idx);
+		void		printContactLine(void);
 };
 
 #endif
