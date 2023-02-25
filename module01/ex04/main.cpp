@@ -10,12 +10,11 @@ int	main(int argc, char **argv)
 		std::cout << "too many/less args." << std::endl;
 		return (0);
 	}
-	std::string	inputFileName	= argv[1];
 	std::string	outputFileName	= argv[1];
 	outputFileName.append(".replace");
 	std::string	s1				= argv[2];
 	std::string	s2				= argv[3];
-	std::ifstream				readFile(inputFileName);
+	std::ifstream				readFile(argv[1]);
 	if (!readFile.is_open())
 	{
 		std::cout << "invalid file name." << std::endl;

@@ -1,11 +1,11 @@
 
-NAME = unnecessaryViolence
+NAME = harl2.0
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
-SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+SRCS = main.cpp Harl.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 

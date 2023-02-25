@@ -1,5 +1,5 @@
 
-NAME = sed_is_for_losers
+NAME = sedIsForLosers
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
