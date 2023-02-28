@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-enum	code
+enum	level
 {
 	DEBUG,
 	INFO,
@@ -14,16 +14,15 @@ enum	code
 
 class Harl
 {
-private:
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
-	void	(Harl::*f[4])(void);
-	int		check_level(std::string level);
-public:
-	void	complain(std::string level);
-			Harl(void);
+	private:
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+		void	(Harl::*f[4])(void);
+	public:
+		void	complain(std::string level);
+				Harl(void);
 };
 
 #endif

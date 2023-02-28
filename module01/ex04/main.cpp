@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	}
 	if (!s1.compare(s2))
 	{
-		std::cout << "both string are the same." << std::endl;
+		std::cout << "both strings are the same." << std::endl;
 		return (1);
 	}
 	if (!s1.length())
