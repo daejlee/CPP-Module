@@ -4,12 +4,16 @@
 
 int	main(void)
 {
-	std::string	buf;
-	std::string *stringPTR = &buf;
-	std::string	&stringREF = buf;
+	std::string	string;
+	std::string *stringPTR = &string;
+	std::string	&stringREF = string;
 	
-	buf = "HI THIS IS BRAIN";
-	std::cout << stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
+	string = "HI THIS IS BRAIN";
+	std::cout << "The memory address of string is		" << &string << std::endl;
+	std::cout << "The memory address of stringPTR is	" << &stringPTR << std::endl;
+	std::cout << "The memory address of stringREF is	" << &stringREF << std::endl;
+	std::cout << "The value of string is			" << string << std::endl;
+	std::cout << "The value pointed by stringPTR is	" << stringPTR << std::endl;
+	std::cout << "The value pointed by stringREF is	" << stringREF << std::endl;
 	return (0);
 }
