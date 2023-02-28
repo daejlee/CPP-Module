@@ -2,6 +2,8 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
+//ptr and ref. What's difference?
+
 int	main(void)
 {
 	{
