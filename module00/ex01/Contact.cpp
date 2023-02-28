@@ -34,15 +34,15 @@ void	Contact::addContact(void)
 void	Contact::printContact(int idx)
 {
 	std::cout << std::setfill(' ') << std::setw(10) << idx << "|";
-	if (fst_name.size() > 9)
+	if (fst_name.size() > 10)
 		std::cout << fst_name.substr(0, 9) << "." << "|";
 	else
 		std::cout << std::setfill(' ') << std::setw(10) << fst_name << "|";
-	if (lst_name.size() > 9)
+	if (lst_name.size() > 10)
 		std::cout << lst_name.substr(0, 9) << "."  << "|";
 	else
 		std::cout << std::setfill(' ') << std::setw(10) << lst_name << "|";
-	if (nickname.size() > 9)
+	if (nickname.size() > 10)
 		std::cout << nickname.substr(0, 9) << "." << std::endl;
 	else
 		std::cout << std::setfill(' ') << std::setw(10) << nickname << std::endl;
