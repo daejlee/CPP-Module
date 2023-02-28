@@ -5,6 +5,5 @@ Zombie	*newZombie(std::string name)
 {
 	Zombie	*ret;
 	ret = new Zombie(name);
-	ret->announce();
 	return (ret);
 }
