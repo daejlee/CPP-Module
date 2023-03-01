@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 		{
 			buf.erase(idx, s1.length());
 			buf.insert(idx, s2);
-			idx = buf.find(s1);
+			idx = buf.find(idx + s2.length());
 		}
 		buf.append("\n");
 		writeFile << buf;
