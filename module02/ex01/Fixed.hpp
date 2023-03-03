@@ -32,7 +32,7 @@ Fixed::Fixed(const float f)
 	std::cout << "Default constructor called" << std::endl;
 	val = static_cast<int>(f) << 8;
 	float	rem = f - static_cast<int>(f);
-	while (rem < 1)
+	while (static_cast<int>(rem) - rem < 0)
 		rem *= 10;
 }
 
