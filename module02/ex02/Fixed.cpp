@@ -116,27 +116,27 @@ float	Fixed::operator/ (const Fixed &a)
 
 float	Fixed::operator++ (void)
 {
-	this->val += 256;
+	this->val += 1;
 	return (this->toFloat());
 }
 
 float	Fixed::operator++ (int)
 {
 	float	temp = this->toFloat();
-	this->val += 256;
+	this->val += 1;
 	return (temp);
 }
 
 float	Fixed::operator-- (void)
 {
-	this->val -= 256;
+	this->val -= 1;
 	return (this->toFloat());
 }
 
 float	Fixed::operator-- (int)
 {
 	float	temp = this->toFloat();
-	this->val -= 256;
+	this->val -= 1;
 	return (temp);
 }
 
