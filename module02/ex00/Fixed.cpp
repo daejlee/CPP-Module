@@ -6,21 +6,21 @@ Fixed::Fixed(void)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::~Fixed()
+Fixed::~Fixed(void)
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &a)
 {
-	val = a.val;
 	std::cout << "Copy constructor called" << std::endl;
+	val = a.getRawBits();
 }
 
 Fixed& Fixed::operator= (const Fixed &a)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	val = a.val;
+	val = a.getRawBits();
 	return (*this);
 }
 
