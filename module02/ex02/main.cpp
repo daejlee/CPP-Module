@@ -18,11 +18,22 @@ int	main(void)
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	
 
 	std::cout << (a < b) << std::endl;
 	std::cout << (a > b) << std::endl;
 	std::cout << (a - b) << std::endl;
 	std::cout << (a + b) << std::endl;
-	return 0;
+	std::cout << (a * b) << std::endl;
+	std::cout << (a / b) << std::endl;
+	std::cout << (a++) << std::endl;
+	std::cout << a << std::endl;
+	std::cout << (++a) << std::endl;
+	std::cout << a << std::endl;
+	std::cout << (a--) << std::endl;
+	std::cout << a << std::endl;
+	std::cout << (--a) << std::endl;
+	std::cout << a << std::endl << std::endl;
+	std::cout << a.max(a, b) << std::endl << std::endl;
+	std::cout << a.min(b, c) << std::endl;
+	return (0);
 }

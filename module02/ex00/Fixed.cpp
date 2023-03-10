@@ -17,7 +17,7 @@ Fixed::Fixed(const Fixed &a)
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed& Fixed::operator = (const Fixed &a)
+Fixed& Fixed::operator= (const Fixed &a)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	val = a.val;

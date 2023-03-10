@@ -15,10 +15,12 @@ public:
 			Fixed(const float f);
 			~Fixed(void);
 			Fixed(const Fixed &a);
+
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 	float	toFloat(void) const;
 	int		toInt(void) const;
+
 	Fixed	&operator= (const Fixed &a);
 	bool	operator< (const Fixed &a);
 	bool	operator> (const Fixed &a);
@@ -26,14 +28,19 @@ public:
 	bool	operator>= (const Fixed &a);
 	bool	operator== (const Fixed &a);
 	bool	operator!= (const Fixed &a);
-	float	operator+ (const Fixed &a, const Fixed &b);
-	float	operator- (const Fixed &a, const Fixed &b);
-	// int		operator* (const Fixed &a);
-	// int		operator/ (const Fixed &a);
-	// Fixed	&operator++ (void);
-	// Fixed	&operator-- (void);
-	// Fixed	&operator++ (int);
-	// Fixed	&operator-- (int);
+	float	operator+ (const Fixed &a);
+	float	operator- (const Fixed &a);
+	float	operator* (const Fixed &a);
+	float	operator/ (const Fixed &a);
+	float	operator++ (void);
+	float	operator++ (int);
+	float	operator-- (void);
+	float	operator-- (int);
+
+	static Fixed		&min(Fixed &a, Fixed &b);
+	static const Fixed	&min(const Fixed &a, const Fixed &b);
+	static Fixed		&max(Fixed &a, Fixed &b);
+	static const Fixed	&max(const Fixed &a, const Fixed &b);
 };
 
 std::ostream& operator<< (std::ostream& out, const Fixed& Fixed);

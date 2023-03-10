@@ -1,12 +1,22 @@
 #include "Fixed.hpp"
 
-Fixed::~Fixed()
+Fixed::Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	val = 0;
+	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(void)
-{}
+Fixed::Fixed(const int i)
+{
+	std::cout << "Int constructor called" << std::endl;
+	val = i << 8;
+}
+
+Fixed::Fixed(const float f)
+{
+	std::cout << "Float constructor called" << std::endl;
+	val = roundf(f * 256);
+}
 
 Fixed::Fixed(const Fixed &a)
 {
@@ -14,16 +24,16 @@ Fixed::Fixed(const Fixed &a)
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int i)
+Fixed& Fixed::operator= (const Fixed &a)
 {
-	std::cout << "Default constructor called" << std::endl;
-	val = i << 8;
+	std::cout << "Copy assignment operator called" << std::endl;
+	val = a.val;
+	return (*this);
 }
 
-Fixed::Fixed(const float f)
+Fixed::~Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
-	val = roundf(f * 256);
+	std::cout << "Destructor called" << std::endl;
 }
 
 float	Fixed::toFloat(void) const
@@ -34,13 +44,6 @@ float	Fixed::toFloat(void) const
 int		Fixed::toInt(void) const
 {
 	return (static_cast<int>(val >> 8));
-}
-
-Fixed& Fixed::operator = (const Fixed &a)
-{
-	std::cout << "Copy assignment operator called" << std::endl;
-	val = a.val;
-	return (*this);
 }
 
 std::ostream& operator<<(std::ostream& out, const Fixed& Fixed)
