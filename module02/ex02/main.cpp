@@ -18,12 +18,12 @@ int	main(void)
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;
 	std::cout << "----------------comparison test---------------" << std::endl;
-	std::cout << (c < d) << std::endl;
-	std::cout << (c > d) << std::endl;
-	std::cout << (c <= d) << std::endl;
-	std::cout << (c >= d) << std::endl;
-	std::cout << (c == d) << std::endl;
-	std::cout << (c != d) << std::endl;
+	std::cout << "c < d result is " << (c < d) << std::endl;
+	std::cout << "c > d result is " << (c > d) << std::endl;
+	std::cout << "c <= d result is " << (c <= d) << std::endl;
+	std::cout << "c >= d result is " << (c >= d) << std::endl;
+	std::cout << "c == d result is " << (c == d) << std::endl;
+	std::cout << "c != d result is " << (c != d) << std::endl;
 	std::cout << "----------------arithmetic test---------------" << std::endl;
 	std::cout << (c + d) << std::endl;
 	std::cout << (c - d) << std::endl;

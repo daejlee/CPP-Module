@@ -3,24 +3,20 @@
 Fixed::Fixed(void)
 {
 	val = 0;
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int i)
 {
-	std::cout << "Int constructor called" << std::endl;
 	val = i << 8;
 }
 
 Fixed::Fixed(const float f)
 {
-	std::cout << "Float constructor called" << std::endl;
 	val = roundf(f * 256);
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &a)
