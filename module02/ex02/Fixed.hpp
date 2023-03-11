@@ -15,23 +15,25 @@ public:
 			Fixed(const float f);
 			~Fixed(void);
 			Fixed(const Fixed &a);
+	Fixed	&operator= (const Fixed &a);
 
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 	float	toFloat(void) const;
 	int		toInt(void) const;
 
-	Fixed	&operator= (const Fixed &a);
-	bool	operator< (const Fixed &a);
 	bool	operator> (const Fixed &a);
-	bool	operator<= (const Fixed &a);
+	bool	operator< (const Fixed &a);
 	bool	operator>= (const Fixed &a);
+	bool	operator<= (const Fixed &a);
 	bool	operator== (const Fixed &a);
 	bool	operator!= (const Fixed &a);
+
 	float	operator+ (const Fixed &a);
 	float	operator- (const Fixed &a);
 	float	operator* (const Fixed &a);
 	float	operator/ (const Fixed &a);
+	
 	float	operator++ (void);
 	float	operator++ (int);
 	float	operator-- (void);
