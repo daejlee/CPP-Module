@@ -55,7 +55,7 @@ float	Fixed::toFloat(void) const
 
 int		Fixed::toInt(void) const
 {
-	return (static_cast<int>(val >> 8));
+	return (val >> 8);
 }
 
 std::ostream& operator<< (std::ostream& out, const Fixed& Fixed)

@@ -54,7 +54,7 @@ float	Fixed::toFloat(void) const
 
 int		Fixed::toInt(void) const
 {
-	return (static_cast<int>(val >> 8));
+	return (val >> 8);
 }
 
 std::ostream& operator<< (std::ostream& out, const Fixed& Fixed)
@@ -63,78 +63,82 @@ std::ostream& operator<< (std::ostream& out, const Fixed& Fixed)
 	return (out);
 }
 
-bool	Fixed::operator< (const Fixed &a)
+bool	Fixed::operator< (const Fixed &a) const
 {
 	return (this->getRawBits() < a.getRawBits());
 }
 
-bool	Fixed::operator> (const Fixed &a)
+bool	Fixed::operator> (const Fixed &a) const
 {
 	return (this->getRawBits() > a.getRawBits());
 }
 
-bool	Fixed::operator<= (const Fixed &a)
+bool	Fixed::operator<= (const Fixed &a) const
 {
 	return (this->getRawBits() <= a.getRawBits());
 }
 
-bool	Fixed::operator>= (const Fixed &a)
+bool	Fixed::operator>= (const Fixed &a) const
 {
 	return (this->getRawBits() >= a.getRawBits());
 }
 
-bool	Fixed::operator== (const Fixed &a)
+bool	Fixed::operator== (const Fixed &a) const
 {
 	return (this->getRawBits() == a.getRawBits());
 }
 
-bool	Fixed::operator!= (const Fixed &a)
+bool	Fixed::operator!= (const Fixed &a) const
 {
 	return (this->getRawBits() != a.getRawBits());
 }
 
-float	Fixed::operator+ (const Fixed &a)
+Fixed	Fixed::operator+ (const Fixed &a) const
 {
-	return (this->toFloat() + a.toFloat());
+	Fixed	temp(toFloat() + a.toFloat());
+	return (temp);
 }
 
-float	Fixed::operator- (const Fixed &a)
+Fixed	Fixed::operator- (const Fixed &a) const
 {
-	return (this->toFloat() - a.toFloat());
+	Fixed	temp(toFloat() - a.toFloat());
+	return (temp);
 }
 
-float	Fixed::operator* (const Fixed &a)
+Fixed	Fixed::operator* (const Fixed &a) const
 {
-	return (this->toFloat() * a.toFloat());
+	Fixed	temp(toFloat() * a.toFloat());
+	return (temp);
 }
 
-float	Fixed::operator/ (const Fixed &a)
+Fixed	Fixed::operator/ (const Fixed &a) const
 {
-	return (this->toFloat() / a.toFloat());
+	Fixed	temp(toFloat() / a.toFloat());
+	return (temp);
 }
 
-float	Fixed::operator++ (void)
+Fixed &Fixed::operator++ (void)
 {
 	this->val += 1;
-	return (this->toFloat());
+	return (*this);
 }
 
-float	Fixed::operator++ (int)
+Fixed Fixed::operator++ (int)
 {
-	float	temp = this->toFloat();
+	const Fixed	temp(this->toFloat());
 	this->val += 1;
 	return (temp);
 }
 
-float	Fixed::operator-- (void)
+Fixed &Fixed::operator-- (void)
 {
 	this->val -= 1;
-	return (this->toFloat());
+	return (*this);
 }
 
-float	Fixed::operator-- (int)
+Fixed Fixed::operator-- (int)
 {
-	float	temp = this->toFloat();
+	const Fixed	temp(this->toFloat());
 	this->val -= 1;
 	return (temp);
 }
