@@ -17,10 +17,7 @@ ClapTrap::~ClapTrap(void)
 ClapTrap::ClapTrap(const ClapTrap &a)
 {
 	std::cout << "Copy constructor called." << std::endl;
-	name = a.name;
-	HitPoints = a.HitPoints;
-	EnergyPoints = a.EnergyPoints;
-	AttackDamage = a.AttackDamage;
+	*this = a;
 }
 
 ClapTrap& ClapTrap::operator= (const ClapTrap &a)
@@ -37,16 +34,15 @@ void		attack(const std::string& target) const
 {
 	if (!HitPoints || !EnergyPoints)
 	{
-		std::cout << "ClapTrap cannot attack !" << std::endl;
+		std::cout << name << " cannot attack !" << std::endl;
 		return ;
 	}
 	std::cout << "ClapTrap " << name << "attacks " << target << ", causing " << AttackDamage << "points of damage!" << std::endl;
-	takeDamage(AttackDamage);
 }
 
 void		takeDamage(unsigned int amount)
 {
-	std::cout << "ClapTrap is taking damage !" << std::endl;
+	std::cout << name << " is taking damage !" << std::endl;
 	if (HitPoints < amount)
 		HitPoints = 0;
 	else
@@ -58,10 +54,10 @@ void		beRepaired(unsigned int amount)
 {
 	if (!EnergyPoints)
 	{
-		std::cout << "ClapTrap cannot repair itself !" << std::endl;
+		std::cout << name << " cannot repair itself !" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap is reparing itself !" << std::endl;
+	std::cout << name << " is reparing itself !" << std::endl;
 	HitPoints += amount;
 	EnergyPoints--;
 }
