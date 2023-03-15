@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap(std::string inputName)
 {
-	std::cout << "Default constructor called." << std::endl;
+	std::cout << "Constructor called." << std::endl;
 	Name = inputName;
 	HitPoints = 10;
 	EnergyPoints = 10;
@@ -39,7 +39,7 @@ void		ClapTrap::attack(const std::string& target)
 	}
 	EnergyPoints--;
 	std::cout << "ClapTrap " << Name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
-	std::cout << Name << "'s status is following.." << std::endl << "HitPoints: " << HitPoints << "		EnergyPoints: " << EnergyPoints << std::endl;
+	std::cout << Name << ": " << "HitPoints: " << HitPoints << "	EnergyPoints: " << EnergyPoints << std::endl;
 }
 
 void		ClapTrap::takeDamage(unsigned int amount)
@@ -50,7 +50,7 @@ void		ClapTrap::takeDamage(unsigned int amount)
 	else
 		HitPoints -= amount;
 	EnergyPoints--;
-	std::cout << Name << "'s status is following.." << std::endl << "HitPoints: " << HitPoints << "		EnergyPoints: " << EnergyPoints << std::endl;
+	std::cout << Name << ": " << "HitPoints: " << HitPoints << "	EnergyPoints: " << EnergyPoints << std::endl;
 }
 
 void		ClapTrap::beRepaired(unsigned int amount)
@@ -63,5 +63,5 @@ void		ClapTrap::beRepaired(unsigned int amount)
 	std::cout << Name << " is reparing itself!" << std::endl;
 	HitPoints += amount;
 	EnergyPoints--;
-	std::cout << Name << "'s status is following.." << std::endl << "HitPoints: " << HitPoints << "		EnergyPoints: " << EnergyPoints << std::endl;
+	std::cout << Name << ": " << "HitPoints: " << HitPoints << "	EnergyPoints: " << EnergyPoints << std::endl;
 }
