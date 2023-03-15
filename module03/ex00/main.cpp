@@ -8,7 +8,7 @@ int	main(void)
 
 	Bob.attack("Mutated Frog");
 	Bob.beRepaired(2);
-	for (i = 0; i++; i < 10)
+	for (int i = 0; i < 12; i++)
 		Bob.attack("Mutated Frog");
 	Jim.attack("Hydrarisk");
 	ArtyJim.attack("Hydrarisk");

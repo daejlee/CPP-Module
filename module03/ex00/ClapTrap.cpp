@@ -30,34 +30,38 @@ ClapTrap& ClapTrap::operator= (const ClapTrap &a)
 	return (*this);
 }
 
-void		attack(const std::string& target) const
+void		ClapTrap::attack(const std::string& target)
 {
 	if (!HitPoints || !EnergyPoints)
 	{
-		std::cout << name << " cannot attack !" << std::endl;
+		std::cout << name << " cannot attack!" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << name << "attacks " << target << ", causing " << AttackDamage << "points of damage!" << std::endl;
+	EnergyPoints--;
+	std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
+	std::cout << name << "'s status is following.." << std::endl << "HitPoints: " << HitPoints << "		EnergyPoints: " << EnergyPoints << std::endl;
 }
 
-void		takeDamage(unsigned int amount)
+void		ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << name << " is taking damage !" << std::endl;
+	std::cout << name << " is taking damage!" << std::endl;
 	if (HitPoints < amount)
 		HitPoints = 0;
 	else
 		HitPoints -= amount;
 	EnergyPoints--;
+	std::cout << name << "'s status is following.." << std::endl << "HitPoints: " << HitPoints << "		EnergyPoints: " << EnergyPoints << std::endl;
 }
 
-void		beRepaired(unsigned int amount)
+void		ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!EnergyPoints)
 	{
-		std::cout << name << " cannot repair itself !" << std::endl;
+		std::cout << name << " cannot repair itself!" << std::endl;
 		return ;
 	}
-	std::cout << name << " is reparing itself !" << std::endl;
+	std::cout << name << " is reparing itself!" << std::endl;
 	HitPoints += amount;
 	EnergyPoints--;
+	std::cout << name << "'s status is following.." << std::endl << "HitPoints: " << HitPoints << "		EnergyPoints: " << EnergyPoints << std::endl;
 }
