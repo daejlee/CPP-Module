@@ -16,8 +16,7 @@ Fixed::Fixed(const float f)
 }
 
 Fixed::~Fixed(void)
-{
-}
+{}
 
 Fixed::Fixed(const Fixed &a)
 {
