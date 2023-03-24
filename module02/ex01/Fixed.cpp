@@ -50,12 +50,12 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return (static_cast<float>(val) / 256.0f);
+	return (static_cast<float>(val) / 256);
 }
 
 int		Fixed::toInt(void) const
 {
-	return (val >> 8);
+	return (roundf(static_cast<float>(val) / 256));
 }
 
 std::ostream& operator<< (std::ostream& out, const Fixed& Fixed)

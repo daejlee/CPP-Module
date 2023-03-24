@@ -11,7 +11,7 @@ Dog::~Dog(void)
 	std::cout << "Dog destructor called." << std::endl;
 }
 
-Dog::Dog(const Dog &a)
+Dog::Dog(const Dog &a) : Animal()
 {
 	std::cout << "Dog copy constructor called." << std::endl;
 	*this = a;

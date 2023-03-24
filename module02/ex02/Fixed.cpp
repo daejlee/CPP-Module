@@ -16,7 +16,8 @@ Fixed::Fixed(const float f)
 }
 
 Fixed::~Fixed(void)
-{}
+{
+}
 
 Fixed::Fixed(const Fixed &a)
 {
@@ -49,7 +50,7 @@ float	Fixed::toFloat(void) const
 
 int		Fixed::toInt(void) const
 {
-	return (val >> 8);
+	return (roundf(static_cast<float>(val) / 256));
 }
 
 std::ostream& operator<< (std::ostream& out, const Fixed& Fixed)

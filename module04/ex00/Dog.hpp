@@ -4,12 +4,12 @@
 
 class Dog : public Animal
 {
-protected:
+private:
 public:
 	Dog(void);
 	~Dog(void);
 	Dog(const Dog &a);
-	Dog	&operator= (const Dog &a);
+	Dog&	operator= (const Dog &a);
 	void	makeSound(void);
 };
 
