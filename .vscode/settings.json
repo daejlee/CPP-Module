@@ -49,7 +49,14 @@
 		"tuple": "cpp",
 		"type_traits": "cpp",
 		"typeinfo": "cpp",
-		"variant": "cpp"
+		"variant": "cpp",
+		"cmath": "cpp",
+		"__functional_base": "cpp",
+		"algorithm": "cpp",
+		"bit": "cpp",
+		"functional": "cpp",
+		"iterator": "cpp",
+		"utility": "cpp"
 	},
 	"workbench.editor.enablePreview": false
 }

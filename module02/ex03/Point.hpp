@@ -6,16 +6,14 @@
 class Point
 {
 private:
-	Fixed	x;
-	Fixed	y;
+	Fixed const	x;
+	Fixed const	y;
 public:
-				Point(void);
-				Point(const float inputX, const float inputY);
-				Point(const Point &a);
+				Point(void) : x(0), y(0){}
+				Point(const float inputX, const float inputY) : x(inputX), y(inputY){}
+				Point(const Point &a) : x(a.x), y(a.y){}
 	Point		&operator= (const Point &a);
 				~Point(void);
-	void		setX(const float inputX);
-	void		setY(const float inputY);
 	float		getX(void) const;
 	float		getY(void) const;
 };

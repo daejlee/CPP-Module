@@ -13,12 +13,12 @@ int	main(void)
 	std::cout << "T: " << T << std::endl;
 	std::cout << "bsp res: " << bsp(A, B, C, T) << std::endl;
 	std::cout << "vertex / edge test" << std::endl;
-	T.setX(0.0f);
-	T.setY(3.5f);
+	Point	temp1(0.0f, 3.5f);
+	T = temp1;
 	std::cout << "modified T: " << T << std::endl;
 	std::cout << "bsp res: " << bsp(A, B, C, T) << std::endl;
-	T.setX(2.0f);
-	T.setY(0.0f);
+	Point	temp2(2.0f, 0.0f);
+	T = temp2;
 	std::cout << "modified T: " << T << std::endl;
 	std::cout << "bsp res: " << bsp(A, B, C, T) << std::endl;
 	return (0);
