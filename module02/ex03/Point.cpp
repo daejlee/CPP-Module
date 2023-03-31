@@ -28,6 +28,8 @@ Point&	Point::operator= (const Point &a)
 	return (*this);
 }
 
+Point::	~Point(void){}
+
 void	Point::setX(const float inputX)
 {
 	Fixed	tempX(inputX);
@@ -50,4 +52,7 @@ float	Point::getY(void) const
 	return (y.toFloat());
 }
 
-Point::	~Point(void){}
+std::ostream& operator<< (std::ostream& out, const Point& Point){
+	out << "(" << Point.getX() << ", " << Point.getY() << ")";
+	return (out);
+}
