@@ -1,16 +1,14 @@
 #include "Point.hpp"
 
-Point::	Point(void)
-{}
+Point::	Point(void) : x(0), y(0){}
 
-Point::	Point(const float inputX, const float inputY)
-{}
+Point::	Point(const float inputX, const float inputY) : x(inputX), y(inputY){}
 
-Point::	Point(const Point &a)
-{}
+Point::	Point(const Point &a) : x(a.x), y(a.y){}
 
 Point&	Point::operator= (const Point &a)
 {
+	(void)a;
 	return (*this);
 }
 

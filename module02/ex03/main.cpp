@@ -14,12 +14,10 @@ int	main(void)
 	std::cout << "bsp res: " << bsp(A, B, C, T) << std::endl;
 	std::cout << "vertex / edge test" << std::endl;
 	Point	temp1(0.0f, 3.5f);
-	T = temp1;
-	std::cout << "modified T: " << T << std::endl;
-	std::cout << "bsp res: " << bsp(A, B, C, T) << std::endl;
+	std::cout << "modified T: " << temp1 << std::endl;
+	std::cout << "bsp res: " << bsp(A, B, C, temp1) << std::endl;
 	Point	temp2(2.0f, 0.0f);
-	T = temp2;
-	std::cout << "modified T: " << T << std::endl;
-	std::cout << "bsp res: " << bsp(A, B, C, T) << std::endl;
+	std::cout << "modified T: " << temp2 << std::endl;
+	std::cout << "bsp res: " << bsp(A, B, C, temp2) << std::endl;
 	return (0);
 }

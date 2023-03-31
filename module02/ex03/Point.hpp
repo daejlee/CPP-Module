@@ -9,9 +9,9 @@ private:
 	Fixed const	x;
 	Fixed const	y;
 public:
-				Point(void) : x(0), y(0){}
-				Point(const float inputX, const float inputY) : x(inputX), y(inputY){}
-				Point(const Point &a) : x(a.x), y(a.y){}
+				Point(void);
+				Point(const float inputX, const float inputY);
+				Point(const Point &a);
 	Point		&operator= (const Point &a);
 				~Point(void);
 	float		getX(void) const;
