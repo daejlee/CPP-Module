@@ -47,5 +47,11 @@ int	main(void)
 	std::cout << Fixed::max(c, d) << std::endl;
 	std::cout << Fixed::min((const Fixed &)c, (const Fixed &)d) << std::endl;
 	std::cout << Fixed::max((const Fixed &)c, (const Fixed &)d) << std::endl;
+	std::cout << "------------------additional test----------------" << std::endl;
+	Fixed	test;
+	std::cout << c << std::endl;
+	c-- = test;
+	std::cout << c << std::endl;
+	std::cout << test << std::endl;
 	return (0);
 }

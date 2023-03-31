@@ -121,7 +121,7 @@ Fixed &Fixed::operator++ (void)
 
 Fixed Fixed::operator++ (int)
 {
-	const Fixed	temp(this->toFloat());
+	Fixed	temp(this->toFloat());
 	this->val += 1;
 	return (temp);
 }
@@ -134,7 +134,7 @@ Fixed &Fixed::operator-- (void)
 
 Fixed Fixed::operator-- (int)
 {
-	const Fixed	temp(this->toFloat());
+	Fixed	temp(this->toFloat());
 	this->val -= 1;
 	return (temp);
 }
