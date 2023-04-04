@@ -37,6 +37,18 @@ ScavTrap::~ScavTrap(void)
 	std::cout << "ScavTrap destructor called." << std::endl;
 }
 
+void	ScavTrap::attack(const std::string& target)
+{
+	if (!HitPoints || !EnergyPoints)
+	{
+		std::cout << Name << " cannot attack!" << std::endl;
+		return ;
+	}
+	EnergyPoints--;
+	std::cout << "ScavTrap " << Name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
+	std::cout << Name << ": " << "HitPoints: " << HitPoints << "	EnergyPoints: " << EnergyPoints << std::endl;
+}
+
 void	ScavTrap::guardGate(void)
 {
 	std::cout << "ScavTrap " << Name << " is now in Gate keeper mode." << std::endl;
