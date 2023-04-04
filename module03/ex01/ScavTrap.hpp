@@ -6,10 +6,12 @@ class ScavTrap : public ClapTrap
 {
 private:
 public:
-	ScavTrap(std::string inputName);
-	~ScavTrap(void);
-	//복사생성자와 복사할당연산자는 다시 정의할 필요가 있는가?
-	void	guardGate(void);
+				ScavTrap(void);
+				ScavTrap(std::string inputName);
+				ScavTrap(const ScavTrap &a);
+	ScavTrap&	operator=(const ScavTrap &a);
+				~ScavTrap(void);
+	void		guardGate(void);
 };
 
 #endif
