@@ -9,11 +9,11 @@ private:
 	std::string	Name;
 public:
 				DiamondTrap(void);
-				DiamondTrap(std::string inputName);
-				DiamondTrap(const DiamondTrap &a);
-	DiamondTrap	&operator=(const DiamondTrap &a);
-				~DiamondTrap(void);
-	void		whoAmI(void);
+	// 			DiamondTrap(std::string inputName);
+	// 			DiamondTrap(const DiamondTrap &a);
+	// DiamondTrap	&operator=(const DiamondTrap &a);
+	// 			~DiamondTrap(void);
+	// void		whoAmI(void);
 };
 
 #endif
