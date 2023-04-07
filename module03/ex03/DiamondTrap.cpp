@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap(),  FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap()
 {
 	std::cout << "DiamondTrap Default Constructor called." << std::endl;
 	std::cout << Name;
@@ -10,7 +10,7 @@ DiamondTrap::DiamondTrap(void) : ClapTrap(),  FragTrap(), ScavTrap()
 	AttackDamage = 30;
 }
 
-DiamondTrap::DiamondTrap(std::string inputName) : ScavTrap(inputName), FragTrap(inputName), ClapTrap(inputName)
+DiamondTrap::DiamondTrap(std::string inputName) : ScavTrap(inputName), FragTrap(inputName)
 {
 	std::cout << "DiamondTrap inputName Constructor called." << std::endl;
 	name = inputName.append("_clap_name");
@@ -19,7 +19,7 @@ DiamondTrap::DiamondTrap(std::string inputName) : ScavTrap(inputName), FragTrap(
 	AttackDamage = 30;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &a) : ScavTrap(a), FragTrap(a), ClapTrap(a)
+DiamondTrap::DiamondTrap(const DiamondTrap &a) : ScavTrap(a), FragTrap(a)
 {
 	std::cout << "DiamondTrap Copy Constructor called." << std ::endl;
 	*this = a;
