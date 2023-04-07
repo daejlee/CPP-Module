@@ -3,17 +3,18 @@
 DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap()
 {
 	std::cout << "DiamondTrap Default Constructor called." << std::endl;
-	name = "Anonymous_clap_name";
-	HitPoints = 100;
-	EnergyPoints = 50;
-	AttackDamage = 30;
+	name = "Anonymous";
+	hitPoints = 100;
+	energyPoints = 50;
+	attackDamage = 30;
 }
 
-DiamondTrap::DiamondTrap(std::string inputName) : ClapTrap(inputName), ScavTrap(), name(ClapTrap::Name+"_clap_name")
+DiamondTrap::DiamondTrap(std::string inputName) : ClapTrap(inputName + "_clap_name"), ScavTrap(), FragTrap()
 {
-	HitPoints = 100;
-	EnergyPoints = 50;
-	AttackDamage = 30;
+	DiamondTrap::name = inputName;
+	hitPoints = 100;
+	energyPoints = 50;
+	attackDamage = 30;
 	std::cout << "DiamondTrap inputName Constructor called." << std::endl;
 }
 
@@ -26,11 +27,11 @@ DiamondTrap::DiamondTrap(const DiamondTrap &a) : ScavTrap(a), FragTrap(a)
 DiamondTrap&	DiamondTrap::operator=(const DiamondTrap &a)
 {
 	std::cout << "DiamondTrap Copy Assignment operator called." << std ::endl;
-	Name = a.Name;
 	name = a.name;
-	HitPoints = a.HitPoints;
-	EnergyPoints = a.EnergyPoints;
-	AttackDamage = a.AttackDamage;
+	name = a.name;
+	hitPoints = a.hitPoints;
+	energyPoints = a.energyPoints;
+	attackDamage = a.attackDamage;
 	return (*this);
 }
 
@@ -45,5 +46,5 @@ void	DiamondTrap::attack(const std::string& target)
 }
 void	DiamondTrap::whoAmI(void)
 {
-	std::cout << "My name is " << Name << ", and my ClapTrap name is " << name << std::endl;
+	std::cout << "My name is " << name << ", and my ClapTrap name is " << ClapTrap::name << std::endl;
 }
