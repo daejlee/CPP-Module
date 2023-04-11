@@ -2,7 +2,7 @@
 
 Animal::Animal(void)
 {
-	std::cout << "Animal constructor called." << std::endl;
+	std::cout << "Animal default constructor called." << std::endl;
 	type = "random animal";
 }
 
@@ -24,7 +24,13 @@ Animal&	Animal::operator= (const Animal &a)
 	return (*this);
 }
 
-void	Animal::makeSound(void)
+std::string	Animal::getType(void) const
+{
+	std::cout << "Animal getType memeber function called." << std::endl;
+	return (type);
+}
+
+void	Animal::makeSound(void) const
 {
 	std::cout << "* RANDOM ANIMAL SOUND *" << std::endl;
 }

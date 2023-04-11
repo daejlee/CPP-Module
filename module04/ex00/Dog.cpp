@@ -24,7 +24,13 @@ Dog&	Dog::operator= (const Dog &a)
 	return (*this);
 }
 
-void	Dog::makeSound(void)
+std::string	Dog::getType(void) const
+{
+	std::cout << "Dog getType member function called." << std::endl;
+	return (type);
+}
+
+void	Dog::makeSound(void) const
 {
 	std::cout << "* BARKING SOUND *" << std::endl;
 }

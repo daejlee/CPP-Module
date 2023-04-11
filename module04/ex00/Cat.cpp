@@ -2,7 +2,7 @@
 
 Cat::Cat(void)
 {
-	std::cout << "Cat constructor called." << std::endl;
+	std::cout << "Cat default constructor called." << std::endl;
 	type = "Cat";
 }
 
@@ -24,7 +24,13 @@ Cat&	Cat::operator= (const Cat &a)
 	return (*this);
 }
 
-void	Cat::makeSound(void)
+std::string	Cat::getType(void) const
+{
+	std::cout << "Cat getType member function called." << std::endl;
+	return (type);
+}
+
+void	Cat::makeSound(void) const
 {
 	std::cout << "* MEOWING SOUND *" << std::endl;
 }
