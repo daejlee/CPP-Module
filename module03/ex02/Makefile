@@ -1,5 +1,5 @@
 
-NAME = FragTrap
+name = FragTrap
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -9,9 +9,9 @@ SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
-all : $(NAME)
+all : $(name)
 
-$(NAME) : $(OBJS)
+$(name) : $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 %.o : %.cpp
@@ -21,7 +21,7 @@ clean :
 	$(RM) $(OBJS)
 
 fclean : clean
-	$(RM) $(NAME)
+	$(RM) $(name)
 
 re :
 	$(MAKE) fclean

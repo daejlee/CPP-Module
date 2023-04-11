@@ -3,17 +3,17 @@
 FragTrap::FragTrap(void) : ClapTrap()
 {
 	std::cout << "FragTrap Default Constructor called." << std::endl;
-	HitPoints = 100;
-	EnergyPoints = 100;
-	AttackDamage = 30;
+	hitPoints = 100;
+	energyPoints = 100;
+	attackDamage = 30;
 }
 
 FragTrap::FragTrap(std::string inputName) : ClapTrap(inputName)
 {
 	std::cout << "FragTrap inputName constructor called." << std::endl;
-	HitPoints = 100;
-	EnergyPoints = 100;
-	AttackDamage = 30;
+	hitPoints = 100;
+	energyPoints = 100;
+	attackDamage = 30;
 };
 
 FragTrap::FragTrap(const FragTrap &a) : ClapTrap(a)
@@ -25,10 +25,10 @@ FragTrap::FragTrap(const FragTrap &a) : ClapTrap(a)
 FragTrap&	FragTrap::operator=(const FragTrap &a)
 {
 	std::cout << "FragTrap Copy assignment operator called" << std::endl;
-	Name = a.Name;
-	HitPoints = a.HitPoints;
-	EnergyPoints = a.EnergyPoints;
-	AttackDamage = a.AttackDamage;
+	name = a.name;
+	hitPoints = a.hitPoints;
+	energyPoints = a.energyPoints;
+	attackDamage = a.attackDamage;
 	return (*this);
 }
 
@@ -39,14 +39,14 @@ FragTrap::~FragTrap(void)
 
 void	FragTrap::attack(const std::string& target)
 {
-	if (!HitPoints || !EnergyPoints)
+	if (!hitPoints || !energyPoints)
 	{
-		std::cout << Name << " cannot attack!" << std::endl;
+		std::cout << name << " cannot attack!" << std::endl;
 		return ;
 	}
-	EnergyPoints--;
-	std::cout << "FragTrap " << Name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
-	std::cout << Name << ": " << "HitPoints: " << HitPoints << "	EnergyPoints: " << EnergyPoints << std::endl;
+	energyPoints--;
+	std::cout << "FragTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+	std::cout << name << ": " << "hitPoints: " << hitPoints << "	energyPoints: " << energyPoints << std::endl;
 }
 
 void	FragTrap::highFivesGuys(void)
