@@ -26,7 +26,6 @@ Animal&	Animal::operator= (const Animal &a)
 
 std::string	Animal::getType(void) const
 {
-	std::cout << "Animal getType memeber function called." << std::endl;
 	return (type);
 }
 

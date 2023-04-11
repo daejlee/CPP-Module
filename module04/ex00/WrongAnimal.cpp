@@ -26,7 +26,6 @@ WrongAnimal&	WrongAnimal::operator= (const WrongAnimal &a)
 
 std::string	WrongAnimal::getType(void) const
 {
-	std::cout << "WrongAnimal getType member function called." << std::endl;
 	return (type);
 }
 

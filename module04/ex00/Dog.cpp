@@ -2,7 +2,7 @@
 
 Dog::Dog(void)
 {
-	std::cout << "Dog constructor called." << std::endl;
+	std::cout << "Dog default constructor called." << std::endl;
 	type = "Dog";
 }
 
@@ -26,11 +26,10 @@ Dog&	Dog::operator= (const Dog &a)
 
 std::string	Dog::getType(void) const
 {
-	std::cout << "Dog getType member function called." << std::endl;
 	return (type);
 }
 
 void	Dog::makeSound(void) const
 {
-	std::cout << "* BARKING SOUND *" << std::endl;
+	std::cout << "* WOOF WOOF *" << std::endl;
 }

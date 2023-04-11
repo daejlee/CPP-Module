@@ -4,22 +4,45 @@
 
 int main()
 {
-	// Animal	a;
-	// a.makeSound();
-	// Dog		b;
-	// b.makeSound();
-	// Dog		c = b;
-	// c.makeSound();
-	// Cat		d;
-	// d.makeSound();
-	// Cat		e = d;
-	// e.makeSound();
-	const WrongAnimal*	meta = new WrongAnimal();
-	const Animal*	j = new Dog();
-	const WrongAnimal*	i = new WrongCat();
+	const Animal		testMeta;
+	const Cat			cat;
+	const Dog			dog;
+	const WrongAnimal	wrongMeta;
+	const WrongCat		wrongCat;
 
-	j->makeSound();
+	std::cout << "------------Basic function test------------" << std::endl;
+	std::cout << testMeta.getType() << " " << cat.getType() << " " << dog.getType() << " " << wrongMeta.getType() << " " << wrongCat.getType() << " " << std::endl;
+	testMeta.makeSound();
+	cat.makeSound();
+	dog.makeSound();
+	wrongMeta.makeSound();
+	wrongCat.makeSound();
+	std::cout << "------------Basic function test end------------" << std::endl;
+	std::cout << "------------Subject PDF test start------------" << std::endl;
+	const Animal*	meta = new Animal();
+	const Animal*	j = new Dog(); //base -> derived, upcasting
+	const Animal*	i = new Cat();
+
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	j->makeSound(); //will output the cat sound!
 	i->makeSound();
+	meta->makeSound();
+	std::cout << "------------Subject PDF test end------------" << std::endl;
+	std::cout << "------------Subject PDF related additional test start------------" << std::endl;
+	const WrongAnimal*	tempMeta = new WrongAnimal();
+	const WrongAnimal*	tempWrongCat = new WrongCat();
 
+	std::cout << tempMeta->getType() << " " << std::endl;
+	std::cout << tempWrongCat->getType() << " " << std::endl;
+	tempMeta->makeSound();
+	tempWrongCat->makeSound(); //will output the wrong cat sound!
+	std::cout << "------------Subject PDF related additional test end------------" << std::endl;
+
+	delete(meta);
+	delete(j);
+	delete(i);
+	delete(tempMeta);
+	delete(tempWrongCat);
 	return (0);
 }

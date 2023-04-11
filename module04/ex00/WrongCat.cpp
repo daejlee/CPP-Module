@@ -26,11 +26,10 @@ WrongCat&	WrongCat::operator= (const WrongCat &a)
 
 std::string	WrongCat::getType(void) const
 {
-	std::cout << "WrongCat getType member function called." << std::endl;
 	return (type);
 }
 
 void	WrongCat::makeSound(void) const
 {
-	std::cout << "* WRONG MEOWING SOUND *" << std::endl;
+	std::cout << "* WOEM WOEM *" << std::endl;
 }
