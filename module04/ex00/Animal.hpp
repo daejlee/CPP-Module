@@ -8,7 +8,7 @@ protected:
 	std::string		type;
 public:
 							Animal(void);
-							~Animal(void);
+	virtual					~Animal(void);
 							Animal(const Animal &a);
 	Animal					&operator= (const Animal &a);
 	virtual std::string		getType(void) const;

@@ -8,7 +8,7 @@ protected:
 	std::string	type;
 public:
 							WrongAnimal(void);
-							~WrongAnimal(void);
+	virtual					~WrongAnimal(void);
 							WrongAnimal(const WrongAnimal &a);
 	WrongAnimal				&operator= (const WrongAnimal &a);
 	virtual std::string		getType(void) const;

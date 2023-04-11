@@ -20,7 +20,7 @@ int main()
 	std::cout << "------------Basic function test end------------" << std::endl;
 	std::cout << "------------Subject PDF test start------------" << std::endl;
 	const Animal*	meta = new Animal();
-	const Animal*	j = new Dog(); //base -> derived, upcasting
+	const Animal*	j = new Dog(); //derived -> base, upcasting
 	const Animal*	i = new Cat();
 
 	std::cout << j->getType() << " " << std::endl;
@@ -40,9 +40,13 @@ int main()
 	std::cout << "------------Subject PDF related additional test end------------" << std::endl;
 
 	delete(meta);
-	delete(j);
+	std::cout << "\n";
+	delete(j); // check if virtual destructor is properly working
+	std::cout << "\n";
 	delete(i);
+	std::cout << "\n";
 	delete(tempMeta);
+	std::cout << "\n";
 	delete(tempWrongCat);
 	return (0);
 }
