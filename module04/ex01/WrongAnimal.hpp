@@ -1,6 +1,6 @@
 #ifndef WRONGANIIMAL_HPP
 # define WRONGANIIMAL_HPP
-# include <iostream>
+# include "Brain.hpp"
 
 class WrongAnimal
 {

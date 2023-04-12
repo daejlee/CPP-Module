@@ -4,17 +4,21 @@ Dog::Dog(void) : Animal()
 {
 	std::cout << "Dog default constructor called." << std::endl;
 	type = "Dog";
+	brainPointer = new Brain;
 }
 
 Dog::~Dog(void)
 {
 	std::cout << "Dog destructor called." << std::endl;
+	delete(brainPointer);
 }
 
 Dog::Dog(const Dog &a) : Animal(a)
 {
 	std::cout << "Dog copy constructor called." << std::endl;
-	*this = a;
+	this->type = a.type;
+	this->brainPointer = new Brain;
+	this->brainPointer = a.brainPointer;
 }
 
 Dog&	Dog::operator= (const Dog &a)

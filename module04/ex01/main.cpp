@@ -2,51 +2,36 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-int main()
+void	leaks()
 {
-	const Animal		testMeta;
-	const Cat			cat;
-	const Dog			dog;
-	const WrongAnimal	wrongMeta;
-	const WrongCat		wrongCat;
+	system("leaks Brain");
+}
 
-	std::cout << "------------Basic function test------------" << std::endl;
-	std::cout << testMeta.getType() << " " << cat.getType() << " " << dog.getType() << " " << wrongMeta.getType() << " " << wrongCat.getType() << " " << std::endl;
-	testMeta.makeSound();
-	cat.makeSound();
-	dog.makeSound();
-	wrongMeta.makeSound();
-	wrongCat.makeSound();
-	std::cout << "------------Basic function test end------------" << std::endl;
+int	main()
+{
 	std::cout << "------------Subject PDF test start------------" << std::endl;
-	const Animal*	meta = new Animal();
-	const Animal*	j = new Dog(); //derived -> base, upcasting
-	const Animal*	i = new Cat();
+	const Animal*	i = new Dog();
+	const Animal*	j = new Cat();
+	atexit(leaks);
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	j->makeSound(); //will output the cat sound!
-	i->makeSound();
-	meta->makeSound();
+	delete i;
+	delete j;
 	std::cout << "------------Subject PDF test end------------" << std::endl;
-	std::cout << "------------Subject PDF related additional test start------------" << std::endl;
-	const WrongAnimal*	tempMeta = new WrongAnimal();
-	const WrongAnimal*	tempWrongCat = new WrongCat();
+	std::cout << "------------additional test start------------" << std::endl;
+	const Animal*	arr[10];
 
-	std::cout << tempMeta->getType() << " " << std::endl;
-	std::cout << tempWrongCat->getType() << " " << std::endl;
-	tempMeta->makeSound();
-	tempWrongCat->makeSound(); //will output the wrong cat sound!
-	std::cout << "------------Subject PDF related additional test end------------" << std::endl;
-
-	delete(meta);
-	std::cout << "\n";
-	delete(j); // check if virtual destructor is properly working
-	std::cout << "\n";
-	delete(i);
-	std::cout << "\n";
-	delete(tempMeta);
-	std::cout << "\n";
-	delete(tempWrongCat);
+	for (int i = 0; i < 5; i++)
+		arr[i] = new Dog();
+	for (int i = 5; i < 10; i++)
+		arr[i] = new Cat();
+	std::cout << "------------deep copy test start------------" << std::endl;
+	const Animal*	copied(arr[0]);
+	std::cout << "original obj adr	: " << arr[0] << std::endl;
+	std::cout << "copied obj adr		: " << copied << std::endl; 
+	std::cout << "------------deep copy test end------------" << std::endl;
+	for (int i = 0; i < 10; i++)
+		delete arr[i];
+	delete(copied);
+	std::cout << "------------additional test end------------" << std::endl;
 	return (0);
 }

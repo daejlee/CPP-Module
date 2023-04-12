@@ -5,6 +5,7 @@
 class Dog : public Animal
 {
 private:
+	Brain		*brainPointer;
 public:
 				Dog(void);
 				~Dog(void);
