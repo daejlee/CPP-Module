@@ -41,7 +41,7 @@ void	ScavTrap::attack(const std::string& target)
 {
 	if (!hitPoints || !energyPoints)
 	{
-		std::cout << name << " cannot attack!" << std::endl;
+		std::cout << "ScavTrap " << name << " cannot attack!" << std::endl;
 		return ;
 	}
 	energyPoints--;

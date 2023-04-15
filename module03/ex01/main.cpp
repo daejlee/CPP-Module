@@ -2,15 +2,17 @@
 
 int	main(void)
 {
-	ScavTrap	Bob("Bob");
+	std::cout << "-------Constructor / Destructor test start-------" << std::endl;
+	ScavTrap	Anonymous;
 	ScavTrap	Jim("Jim");
 	ScavTrap	ArtyJim = Jim;
-
-	Bob.attack("Mutated Frog");
-	Bob.beRepaired(2);
-	Bob.attack("Mutated Frog");
+	std::cout << "-------Constructor / Destructor test end-------\n" << std::endl;
+	
+	std::cout << "-------member function test start-------" << std::endl;
+	Anonymous.attack("Mutated Frog");
+	Anonymous.beRepaired(2);
 	Jim.attack("Hydrarisk");
 	ArtyJim.attack("Hydrarisk");
-	Jim.guardGate();
+	std::cout << "-------member function test end-------\n" << std::endl;
 	return (0);
 }
