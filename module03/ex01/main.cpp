@@ -13,6 +13,7 @@ int	main(void)
 	Anonymous.beRepaired(2);
 	Jim.attack("Hydrarisk");
 	ArtyJim.attack("Hydrarisk");
+	Jim.guardGate();
 	std::cout << "-------member function test end-------\n" << std::endl;
 	return (0);
 }

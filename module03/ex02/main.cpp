@@ -2,15 +2,18 @@
 
 int	main(void)
 {
-	FragTrap	Bob("Bob");
+	std::cout << "-------Constructor / Destructor test start-------" << std::endl;
+	FragTrap	Anonymous;
 	FragTrap	Jim("Jim");
 	FragTrap	ArtyJim = Jim;
-
-	Bob.attack("Mutated Frog");
-	Bob.beRepaired(2);
-	Bob.attack("Mutated Frog");
+	std::cout << "-------Constructor / Destructor test start-------" << std::endl;
+	
+	std::cout << "-------member function test start-------" << std::endl;
+	Anonymous.attack("Mutated Frog");
+	Anonymous.beRepaired(2);
 	Jim.attack("Hydrarisk");
 	ArtyJim.attack("Hydrarisk");
 	Jim.highFivesGuys();
+	std::cout << "-------member function test end-------\n" << std::endl;
 	return (0);
 }
