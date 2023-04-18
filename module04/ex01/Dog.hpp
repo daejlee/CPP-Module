@@ -11,6 +11,7 @@ public:
 				~Dog(void);
 				Dog(const Dog &a);
 	Dog&		operator= (const Dog &a);
+	const Brain	*getBP(void) const;
 	void		makeSound(void) const;
 };
 

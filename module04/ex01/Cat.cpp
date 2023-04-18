@@ -18,7 +18,7 @@ Cat::Cat(const Cat &a) : Animal(a)
 	std::cout << "Cat copy constructor called." << std::endl;
 	this->type = a.type;
 	this->brainPointer = new Brain;
-	this->brainPointer = a.brainPointer;
+	*this->brainPointer = *a.brainPointer;
 }
 
 Cat&	Cat::operator= (const Cat &a)
@@ -26,6 +26,11 @@ Cat&	Cat::operator= (const Cat &a)
 	std::cout << "Cat copy assignment operator called." << std::endl;
 	type = a.type;
 	return (*this);
+}
+
+const Brain*	Cat::getBP(void) const
+{
+	return (brainPointer);
 }
 
 void	Cat::makeSound(void) const

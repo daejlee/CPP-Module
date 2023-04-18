@@ -18,20 +18,24 @@ int	main()
 	delete j;
 	std::cout << "------------Subject PDF test end------------" << std::endl;
 	std::cout << "------------additional test start------------" << std::endl;
-	const Animal*	arr[10];
+	const Animal*	arr[4];
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 2; i++)
 		arr[i] = new Dog();
-	for (int i = 5; i < 10; i++)
+	for (int i = 2; i < 4; i++)
 		arr[i] = new Cat();
+	arr[0]->makeSound();
+	arr[2]->makeSound();
 	std::cout << "------------deep copy test start------------" << std::endl;
-	const Animal*	copied(arr[0]);
-	std::cout << "original obj adr	: " << arr[0] << std::endl;
-	std::cout << "copied obj adr		: " << copied << std::endl; 
+	const Dog	original_dog;
+	const Dog	copy_dog(original_dog);
+	std::cout << "original obj adr	: " << &original_dog << std::endl;
+	std::cout << "copied obj adr		: " << &copy_dog << std::endl; 
+	std::cout << "original_brain		: " << original_dog.getBP() << std::endl;
+	std::cout << "copied_brain		: " << copy_dog.getBP() << std::endl;
 	std::cout << "------------deep copy test end------------" << std::endl;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 4; i++)
 		delete arr[i];
-	delete(copied);
 	std::cout << "------------additional test end------------" << std::endl;
 	return (0);
 }
