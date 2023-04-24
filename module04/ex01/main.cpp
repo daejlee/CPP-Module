@@ -1,8 +1,14 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
+void	leaks()
+{
+	system("leaks Brain");
+}
+
 int	main()
 {
+	atexit(leaks);
 	std::cout << "------------Subject PDF test start------------" << std::endl;
 	const Animal*	i = new Dog();
 	const Animal*	j = new Cat();
@@ -30,5 +36,8 @@ int	main()
 	for (int i = 0; i < 4; i++)
 		delete arr[i];
 	std::cout << "------------additional test end------------" << std::endl;
+	Dog	dog;
+	Dog	anotherDog;
+	anotherDog = dog;
 	return (0);
 }
