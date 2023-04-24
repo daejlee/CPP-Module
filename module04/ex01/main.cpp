@@ -1,18 +1,11 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongCat.hpp"
-
-void	leaks()
-{
-	system("leaks Brain");
-}
 
 int	main()
 {
 	std::cout << "------------Subject PDF test start------------" << std::endl;
 	const Animal*	i = new Dog();
 	const Animal*	j = new Cat();
-	atexit(leaks);
 
 	delete i;
 	delete j;

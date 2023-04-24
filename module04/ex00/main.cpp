@@ -20,12 +20,12 @@ int main()
 	std::cout << "------------Basic function test end------------" << std::endl;
 	std::cout << "------------Subject PDF test start------------" << std::endl;
 	const Animal*	meta = new Animal();
-	const Animal*	j = new Dog(); //derived -> base, upcasting
+	const Animal*	j = new Dog();
 	const Animal*	i = new Cat();
 
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
-	j->makeSound(); //will output the cat sound!
+	j->makeSound();
 	i->makeSound();
 	meta->makeSound();
 	std::cout << "------------Subject PDF test end------------" << std::endl;
@@ -36,7 +36,7 @@ int main()
 	std::cout << tempMeta->getType() << " " << std::endl;
 	std::cout << tempWrongCat->getType() << " " << std::endl;
 	tempMeta->makeSound();
-	tempWrongCat->makeSound(); //will output the wrong cat sound!
+	tempWrongCat->makeSound();
 	std::cout << "------------Subject PDF related additional test end------------" << std::endl;
 
 	delete(meta);
