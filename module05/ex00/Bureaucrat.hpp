@@ -1,19 +1,13 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 # include <iostream>
+# include <exception>
+# include <string>
 class Bureaucrat
 {
 private:
 	const std::string	name;
 	int					grade;
-	class GradeTooHighException{
-		public:
-			void	report(void){std::cout << "Grade too high!" << std::endl;}
-	};
-	class GradeTooLowException{
-		public:
-			void	report(void){std::cout << "Grade too low!" << std::endl;}
-	};
 public:
 						Bureaucrat(void);
 						Bureaucrat(std::string inputName, int inputGrade);
@@ -22,8 +16,10 @@ public:
 						~Bureaucrat(void);
 	const std::string	getName(void) const;
 	int					getGrade(void) const;
-	void				incrementGrade(int val);
-	void				decrementGrade(int val);
+	void				incrementGrade(void);
+	void				decrementGrade(void);
+	std::out_of_range	GradeTooHighException(void) const;
+	std::out_of_range	GradeTooLowException(void) const;
 };
 
 std::ostream& operator<< (std::ostream &out, const Bureaucrat& a);

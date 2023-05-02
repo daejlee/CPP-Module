@@ -20,6 +20,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& a){
 	std::cout << "Bureaucrat copy assignment operator called" << std::endl;
 	if (this != &a)
 		grade = a.getGrade();
+	return (*this);
 }
 
 Bureaucrat::~Bureaucrat(void){
@@ -34,23 +35,33 @@ int	Bureaucrat::getGrade(void) const{
 	return (grade);
 }
 
-void	Bureaucrat::incrementGrade(int val){
-	if (grade + val < 1)
+void	Bureaucrat::incrementGrade(void){
+	if (grade - 1 < 1)
 		throw GradeTooHighException();
-	else if (grade + val > 150)
+	else if (grade - 1 > 150)
 		throw GradeTooLowException();
 	std::cout << getName() << "'s grade is now " << getGrade() << std::endl;
 }
 
-void	Bureaucrat::decrementGrade(int val){
-	if (grade - val < 1)
+void	Bureaucrat::decrementGrade(void){
+	if (grade + 1 < 1)
 		throw GradeTooHighException();
-	else if (grade - val > 150)
+	else if (grade + 1 > 150)
 		throw GradeTooLowException();
 	std::cout << getName() << "'s grade is now " << getGrade() << std::endl;
+}
+
+std::out_of_range	Bureaucrat::GradeTooHighException(void) const{
+	std::string	buf = "Grade too high!";
+	return (std::out_of_range(buf));
+}
+std::out_of_range	Bureaucrat::GradeTooLowException(void) const{
+	std::string	buf = "Grade too low!";
+	return (std::out_of_range(buf));
 }
 
 std::ostream& operator<< (std::ostream &out, const Bureaucrat& a)
 {
 	out << a.getName() << ", bureaucrat grade " << a.getGrade() << std::endl;
+	return (out);
 }
