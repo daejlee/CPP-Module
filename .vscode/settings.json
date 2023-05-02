@@ -56,7 +56,8 @@
 		"bit": "cpp",
 		"functional": "cpp",
 		"iterator": "cpp",
-		"utility": "cpp"
+		"utility": "cpp",
+		"*.tcc": "cpp"
 	},
 	"workbench.editor.enablePreview": false
 }
