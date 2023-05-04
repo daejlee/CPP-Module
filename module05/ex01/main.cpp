@@ -17,10 +17,10 @@ int main()
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << "insertion operator overloading test" << std::endl;
-	Bureaucrat	John("John", 5);
-	std::cout << John;
-	std::cout << "sign test" << std::endl;
 	Form		Admission("SeoulUnivAdmissionForm", 5, 10);
+	std::cout << Admission;
+	std::cout << "sign test" << std::endl;
+	Bureaucrat	John("John", 5);
 	John.signForm(Admission);
 	John.decrementGrade();
 	John.signForm(Admission);

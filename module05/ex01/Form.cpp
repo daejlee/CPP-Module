@@ -53,12 +53,6 @@ std::out_of_range	Form::GradeTooLowException(void) const{
 	return (std::out_of_range(buf));
 }
 
-std::ostream& operator<< (std::ostream &out, const Form& a)
-{
-	out << a.getName() << ", Sign: " << a.getSign() << ", gradeSign: " << a.getGradeSign() << ", gradeExecute: " << a.getGradeSign() << std::endl;
-	return (out);
-}
-
 void	Form::beSigned(const Bureaucrat &target){
 	if (target.getGrade() <= _gradeSign){
 		_sign = true;
@@ -66,4 +60,10 @@ void	Form::beSigned(const Bureaucrat &target){
 	else{
 		throw GradeTooLowException();
 	}
+}
+
+std::ostream& operator<< (std::ostream &out, const Form& a)
+{
+	out << a.getName() << ", Sign: " << a.getSign() << ", gradeSign: " << a.getGradeSign() << ", gradeExecute: " << a.getGradeSign() << std::endl;
+	return (out);
 }
