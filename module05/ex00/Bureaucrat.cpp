@@ -1,54 +1,56 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void) : name("Anonymous"), grade(1){
-	std::cout << "Default Bureaucrat constructor called, name is: " << name << std::endl;
+Bureaucrat::Bureaucrat(void) : _name("Anonymous"), _grade(1){
+	std::cout << "Default Bureaucrat constructor called, name is: " << _name << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string inputName, int inputGrade) : name(inputName), grade(inputGrade){
-	if (grade < 1)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade){
+	if (_grade < 1)
 		throw GradeTooHighException();
-	else if (grade > 150)
+	else if (_grade > 150)
 		throw GradeTooLowException();
-	std::cout << "input Bureaucrat constructor called, name is " << name << std::endl;
+	std::cout << "Input Bureaucrat constructor called, name is " << _name << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& a) : name(a.name), grade(a.grade){
-	std::cout << "Bureaucrat copy constructor called name is " << name << std::endl;
+Bureaucrat::Bureaucrat(const Bureaucrat& a) : _name(a.getName()), _grade(a.getGrade()){
+	std::cout << "Bureaucrat copy constructor called name is " << _name << std::endl;
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& a){
-	std::cout << "Bureaucrat copy assignment operator called" << std::endl;
 	if (this != &a)
-		grade = a.getGrade();
+		_grade = a.getGrade();
+	std::cout << "Bureaucrat copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 Bureaucrat::~Bureaucrat(void){
-	std::cout << "Bureaucrat destructor called, name is " << name << std::endl;
+	std::cout << "Bureaucrat destructor called, name is " << _name << std::endl;
 }
 
 const std::string	Bureaucrat::getName(void) const{
-	return (name);
+	return (_name);
 }
 
 int	Bureaucrat::getGrade(void) const{
-	return (grade);
+	return (_grade);
 }
 
 void	Bureaucrat::incrementGrade(void){
-	if (grade - 1 < 1)
+	if (_grade - 1 < 1)
 		throw GradeTooHighException();
-	else if (grade - 1 > 150)
+	else if (_grade - 1 > 150)
 		throw GradeTooLowException();
-	std::cout << getName() << "'s grade is now " << getGrade() << std::endl;
+	_grade--;
+	std::cout << _name << "'s grade is now " << _grade << std::endl;
 }
 
 void	Bureaucrat::decrementGrade(void){
-	if (grade + 1 < 1)
+	if (_grade + 1 < 1)
 		throw GradeTooHighException();
-	else if (grade + 1 > 150)
+	else if (_grade + 1 > 150)
 		throw GradeTooLowException();
-	std::cout << getName() << "'s grade is now " << getGrade() << std::endl;
+	_grade++;
+	std::cout << _name << "'s grade is now " << _grade << std::endl;
 }
 
 std::out_of_range	Bureaucrat::GradeTooHighException(void) const{

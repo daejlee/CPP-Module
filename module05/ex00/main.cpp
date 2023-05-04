@@ -30,5 +30,8 @@ int main()
 	catch (std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
+	Bureaucrat	John("John", 1);
+	std::cout << "insertion operator overloading test" << std::endl;
+	std::cout << John;
 	return (0);
 }

@@ -1,34 +1,28 @@
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 int main()
 {
 	std::cout << "constructor test" << std::endl;
 	try{
-		Bureaucrat	Bob("Bob", 151);
+		Form	Bob("Bob", 150, 151);
 	}
 	catch (std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
 	try{
-		Bureaucrat	Bob("Bob", 0);
+		Form	Bob("Bob", 0, 150);
 	}
 	catch (std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout << "increment / decrement test" << std::endl;
-	try{
-		Bureaucrat	John("John", 1);
-		John.incrementGrade();
-	}
-	catch (std::exception &e){
-		std::cerr << e.what() << std::endl;
-	}
-	try{
-		Bureaucrat	John("John", 150);
-		John.decrementGrade();
-	}
-	catch (std::exception &e){
-		std::cerr << e.what() << std::endl;
-	}
+	std::cout << "insertion operator overloading test" << std::endl;
+	Bureaucrat	John("John", 5);
+	std::cout << John;
+	std::cout << "sign test" << std::endl;
+	Form		Admission("SeoulUnivAdmissionForm", 5, 10);
+	John.signForm(Admission);
+	John.decrementGrade();
+	John.signForm(Admission);
 	return (0);
 }

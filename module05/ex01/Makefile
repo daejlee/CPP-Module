@@ -1,5 +1,5 @@
 
-NAME = Bureaucrat
+NAME = Form
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
