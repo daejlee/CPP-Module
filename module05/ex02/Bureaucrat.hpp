@@ -1,10 +1,11 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
-# include <iostream>
+# include "AForm.hpp"
 # include <exception>
 # include <string>
 
-class Form;
+class AForm;
+
 class Bureaucrat
 {
 	private:
@@ -22,6 +23,8 @@ class Bureaucrat
 		void				decrementGrade(void);
 		std::out_of_range	GradeTooHighException(void) const;
 		std::out_of_range	GradeTooLowException(void) const;
+		void				signForm(AForm& target) const;
+		void				executeForm(AForm& target) const;
 };
 
 std::ostream& operator<< (std::ostream &out, const Bureaucrat& a);
