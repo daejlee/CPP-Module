@@ -24,7 +24,6 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void){ //기반클래스 소멸자
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor){
 	if (executor.getGrade() <= getGradeExecute()){
-		setSign();
 		std::string buf = getName();
 		buf.append("_shruberry");
 		std::ofstream	fout(buf.c_str());

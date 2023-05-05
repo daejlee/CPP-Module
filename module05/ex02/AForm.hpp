@@ -22,7 +22,6 @@ class AForm
 		bool				getSign(void) const;
 		int					getGradeSign(void) const;
 		int					getGradeExecute(void) const;
-		void				setSign(void);
 		std::out_of_range	GradeTooHighException(void) const;
 		std::out_of_range	GradeTooLowException(void) const;
 		void				beSigned(Bureaucrat const& signer);

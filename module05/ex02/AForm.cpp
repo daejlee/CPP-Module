@@ -52,10 +52,6 @@ void	AForm::beSigned(const Bureaucrat &signer){
 	}
 }
 
-void	AForm::setSign(void){
-	_sign = true;
-}
-
 std::out_of_range	AForm::GradeTooHighException(void) const{
 	std::string	buf = "Grade too high!";
 	return (std::out_of_range(buf));
