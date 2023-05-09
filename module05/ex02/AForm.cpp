@@ -64,6 +64,6 @@ std::out_of_range	AForm::GradeTooLowException(void) const{
 
 std::ostream& operator<< (std::ostream &out, const AForm& a)
 {
-	out << a.getName() << ", Sign: " << a.getSign() << ", gradeSign: " << a.getGradeSign() << ", gradeExecute: " << a.getGradeSign() << std::endl;
+	out << a.getName() << ", Sign: " << a.getSign() << ", gradeSign: " << a.getGradeSign() << ", gradeExecute: " << a.getGradeExecute() << std::endl;
 	return (out);
 }

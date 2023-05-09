@@ -18,7 +18,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& a
 	return (*this);
 }
 
-RobotomyRequestForm::~RobotomyRequestForm(void){ //기반클래스 소멸자 호출 안해줘도 대나
+RobotomyRequestForm::~RobotomyRequestForm(void){
 	std::cout << "RobotomyRequestForm destructor called, name is " << getName() << std::endl;
 }
 

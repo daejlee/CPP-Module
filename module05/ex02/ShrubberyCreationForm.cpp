@@ -18,7 +18,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm(void){ //기반클래스 소멸자 호출 안해줘도 대나
+ShrubberyCreationForm::~ShrubberyCreationForm(void){
 	std::cout << "ShrubberyCreationForm destructor called, name is " << getName() << std::endl;
 }
 

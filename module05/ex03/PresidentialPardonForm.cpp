@@ -18,7 +18,7 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-PresidentialPardonForm::~PresidentialPardonForm(void){ //기반클래스 소멸자 호출 안해줘도 대나
+PresidentialPardonForm::~PresidentialPardonForm(void){
 	std::cout << "PresidentialPardonForm destructor called, name is " << getName() << std::endl;
 }
 
