@@ -7,13 +7,13 @@ int main()
 	AForm*	rrf;
 	AForm*	ppf;
 
-	scf = Ben.makeForm("shrubbery creation", "House");
-	rrf = Ben.makeForm("robotomy request", "Robocop");
-	ppf = Ben.makeForm("presidential pardon", "Jim");
-	delete scf;
-	delete rrf;
-	delete ppf;
 	try{
+		scf = Ben.makeForm("shrubbery creation", "House");
+		rrf = Ben.makeForm("robotomy request", "Robocop");
+		ppf = Ben.makeForm("presidential pardon", "Jim");
+		delete scf;
+		delete rrf;
+		delete ppf;
 		AForm*	wrongForm = Ben.makeForm("wrong", "wrong");
 		wrongForm->getName();
 	}

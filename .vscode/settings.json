@@ -57,7 +57,19 @@
 		"functional": "cpp",
 		"iterator": "cpp",
 		"utility": "cpp",
-		"*.tcc": "cpp"
+		"*.tcc": "cpp",
+		"__hash_table": "cpp",
+		"__node_handle": "cpp",
+		"__split_buffer": "cpp",
+		"array": "cpp",
+		"complex": "cpp",
+		"deque": "cpp",
+		"fstream": "cpp",
+		"optional": "cpp",
+		"sstream": "cpp",
+		"stack": "cpp",
+		"unordered_map": "cpp",
+		"vector": "cpp"
 	},
 	"workbench.editor.enablePreview": false
 }
