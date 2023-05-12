@@ -2,7 +2,6 @@
 # define BUREAUCRAT_HPP
 # include "Form.hpp"
 # include <exception>
-# include <string>
 
 class Form;
 class Bureaucrat
