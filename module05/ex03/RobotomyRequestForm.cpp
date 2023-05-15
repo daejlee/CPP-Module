@@ -23,9 +23,12 @@ RobotomyRequestForm::~RobotomyRequestForm(void){
 }
 
 void	RobotomyRequestForm::execute(const Bureaucrat& executor){
-	if (executor.getGrade() <= getGradeExecute()){
+	if (getSign() && executor.getGrade() <= getGradeExecute()){
 		std::cout << "* DRILLING NOISES *" << std::endl;
-		std::cout << getName() << " has been robotomized successfully 50\% of the time." << std::endl;
+		if (rand() % 2)
+			std::cout << getName() << " has been robotomized successfully." << std::endl;
+		else
+			std::cout << getName() << "'s robotomization has failed." << std::endl;
 	}
 	else{
 		throw GradeTooLowException();

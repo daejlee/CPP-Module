@@ -23,7 +23,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void){
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor){
-	if (executor.getGrade() <= getGradeExecute()){
+	if (getSign() && executor.getGrade() <= getGradeExecute()){
 		std::string buf = getName();
 		buf.append("_shruberry");
 		std::ofstream	fout(buf.c_str());

@@ -23,7 +23,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void){
 }
 
 void	PresidentialPardonForm::execute(const Bureaucrat& executor){
-	if (executor.getGrade() <= getGradeExecute()){
+	if (getSign() && executor.getGrade() <= getGradeExecute()){
 		std::cout << getName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 	}
 	else{
