@@ -12,8 +12,7 @@ class ScalarConverter{
 		ScalarConverter&	operator=(const ScalarConverter& a);
 							~ScalarConverter(void);
 		void				Convert(std::string input);
-		void				putChar(std::string input);
-		void				putNum(double d);
+		void				print(double d);
 };
 
 #endif

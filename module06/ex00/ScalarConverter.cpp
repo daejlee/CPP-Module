@@ -17,19 +17,8 @@ ScalarConverter&  ScalarConverter::operator=(const ScalarConverter& a){
 
 ScalarConverter::~ScalarConverter(void){}
 
-void	ScalarConverter::putChar(std::string input){
-	if (input.length() == 1 && !isdigit(input[0])){
-		std::cout << "char: '" << input[0] << "'" << std::endl;
-	}
-	else if (input.length() == 1 && isdigit(input[0])){
-		std::cout << "char: Non displayable" << std::endl;
-	}
-	else{
-		std::cout << "char: impossible" << std::endl;
-	}
-}
-
-void	ScalarConverter::putNum(double d){
+void	ScalarConverter::print(double d){
+	std::cout << "char: " << static_cast<char>(d) << std::endl;
 	if (d == HUGE_VAL || d == -HUGE_VAL || isnan(d))
 		std::cout << "int: " << "impossible" << std::endl;
 	else
@@ -40,6 +29,5 @@ void	ScalarConverter::putNum(double d){
 
 void	ScalarConverter::Convert(std::string input){
 	double	d = strtod(input.c_str(), NULL);
-	putChar(input);
-	putNum(d);
+	print(d);
 }
