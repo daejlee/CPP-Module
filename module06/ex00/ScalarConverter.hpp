@@ -3,19 +3,6 @@
 # include <iostream>
 # include <cstdlib>
 
-enum e_type{
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE,
-	NEG_INFF,
-	POS_INFF,
-	NANF,
-	NEG_INF,
-	POS_INF,
-	NANN
-};
-
 class ScalarConverter{
 	private:
 	public:

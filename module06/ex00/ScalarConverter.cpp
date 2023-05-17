@@ -30,15 +30,16 @@ void	ScalarConverter::putChar(std::string input){
 }
 
 void	ScalarConverter::putNum(double d){
-	std::cout << "int: " << static_cast<int>(d) << std::endl;
+	if (d <= HUGE_VAL || d < __DBL_MIN__ || d == NAN?!)
+		std::cout << "int: " << "impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(d) << std::endl;
 	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(d) << std::endl;
 }
 
 void	ScalarConverter::Convert(std::string input){
-	char	**endptr = NULL;
-	double	d = strtod(input.c_str(), endptr);
-	std::cout << d << std::endl;
+	double	d = strtod(input.c_str(), NULL);
 	putChar(input);
 	putNum(d);
 }
