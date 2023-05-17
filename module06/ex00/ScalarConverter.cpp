@@ -18,12 +18,19 @@ ScalarConverter&  ScalarConverter::operator=(const ScalarConverter& a){
 ScalarConverter::~ScalarConverter(void){}
 
 void	ScalarConverter::putChar(std::string input){
-	if (d == HUGE_VAL || d == -HUGE_VAL || isnan(d))
-		std::cout << "char: " << "impossible" << std::endl;
-	else if (isprint(static_cast<int>(d)))
-		std::cout << "char: " << static_cast<char>(d) << std::endl;
-	else
-		std::cout << "char: " << "non displayable" << std::endl;
+	if (input.length() == 1 && isalpha(input[0])){
+		std::cout << "char: '" << input[0] << "'" << std::endl;
+	}
+	else if (input.length() == 1 && !isalpha(input[0])){
+		std::cout << "char: Non displayable" << std::endl;
+	}
+	else{
+		double d = strtod(input.c_str(), NULL);
+		if (d == HUGE_VAL || d == -HUGE_VAL || isnan(d))
+			std::cout << "char: " << "impossible" << std::endl;
+		else
+			std::cout << "char: " << static_cast<char>(d) << std::endl;
+	}
 }
 
 void	ScalarConverter::putNum(double d){
