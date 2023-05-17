@@ -30,7 +30,7 @@ void	ScalarConverter::putChar(std::string input){
 }
 
 void	ScalarConverter::putNum(double d){
-	if (d <= HUGE_VAL || d < __DBL_MIN__ || d == NAN?!)
+	if (d == HUGE_VAL || d == -HUGE_VAL || isnan(d))
 		std::cout << "int: " << "impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
