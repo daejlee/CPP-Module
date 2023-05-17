@@ -30,7 +30,9 @@ void	RobotomyRequestForm::execute(const Bureaucrat& executor){
 		else
 			std::cout << getName() << "'s robotomization has failed." << std::endl;
 	}
-	else{
-		throw GradeTooLowException();
+	else if (!getSign()){
+		throw NotSignedException();
 	}
+	else
+		throw GradeTooLowException();
 }

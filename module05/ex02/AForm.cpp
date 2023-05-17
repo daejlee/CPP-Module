@@ -62,6 +62,11 @@ std::out_of_range	AForm::GradeTooLowException(void) const{
 	return (std::out_of_range(buf));
 }
 
+std::invalid_argument	AForm::NotSignedException(void) const{
+	std::string	buf = "Form is not signed yet!";
+	return (std::invalid_argument(buf));
+}
+
 std::ostream& operator<< (std::ostream &out, const AForm& a)
 {
 	out << a.getName() << ", Sign: " << a.getSign() << ", gradeSign: " << a.getGradeSign() << ", gradeExecute: " << a.getGradeExecute() << std::endl;

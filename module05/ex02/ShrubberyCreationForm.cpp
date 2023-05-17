@@ -48,7 +48,9 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor){
          		<< "           ||   ||\n";
 		fout.close();
 	}
-	else{
-		throw GradeTooLowException();
+	else if (!getSign()){
+		throw NotSignedException();
 	}
+	else
+		throw GradeTooLowException();
 }
