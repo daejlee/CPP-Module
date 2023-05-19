@@ -1,17 +1,14 @@
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 # include <iostream>
-// # include <cstdlib>
-// # include <cmath>
 
 typedef struct s_Data
 {
-	int		intData;	//4byte
-	float	floatData;	//4byte
-	char	charData;	//1byte
-	double	doubleData;	//8byte
+	int		intData;
+	float	floatData;
+	char	charData;
+	double	doubleData;
 } Data;
-size_t	a;
 
 class Serializer{
 	private:

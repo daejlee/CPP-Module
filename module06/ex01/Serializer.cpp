@@ -22,7 +22,8 @@ Serializer::~Serializer(void){}
  * @return Converted unsigned integer type uintptr_t
  */
 uintptr_t	Serializer::serialize(Data* ptr){
-	
+	uintptr_t	serializedData = reinterpret_cast<uintptr_t>(ptr);
+	return (serializedData);
 }
 
 /*!
@@ -32,5 +33,6 @@ uintptr_t	Serializer::serialize(Data* ptr){
  * @return Converted pointer to Data
  */
 Data*		Serializer::deserialize(uintptr_t raw){
-
+	Data	*deserializedData = reinterpret_cast<Data *>(raw);
+	return (deserializedData);
 }
