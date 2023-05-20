@@ -5,13 +5,18 @@
 
 Base	*generate(void){
 	std::srand(static_cast<unsigned int>(std::time(0)));
-	switch (std::rand() % 3){
-		case 0:
-			return new A;
-		case 1:
-			return new B;
-		case 2:
-			return new C;
+	try{
+		switch (std::rand() % 3){
+			case 0:
+				return new A;
+			case 1:
+				return new B;
+			case 2:
+				return new C;
+		}
+	}
+	catch (std::exception &e){
+		e.what();
 	}
 	return (NULL);
 }
