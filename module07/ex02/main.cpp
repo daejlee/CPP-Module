@@ -1,13 +1,7 @@
-#include "iter.hpp"
-
-int	ft_pow(int val){
-	return val * val;
-}
+#include "Array.hpp"
 
 int	main(void){
-	int	numArr[5] = {0, 1, 2, 3, 4};
-	::iter(numArr, 5, &ft_pow);
-	for (int i = 0; i < 5; i++)
-		std::cout << numArr[i] << std::endl;
+	Array<int>	A(5);
+	std::cout << A[1] << std::endl;
 	return 0;
 }

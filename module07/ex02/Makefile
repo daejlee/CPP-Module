@@ -1,5 +1,5 @@
 
-NAME = Iter
+NAME = Array
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
