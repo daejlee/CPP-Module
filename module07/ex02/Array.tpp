@@ -7,7 +7,7 @@
  */
 template <class T>
 Array<T>::Array(){
-	_arr = new [];
+	_arr = new T[0];
 	_n = 0;
 }
 
@@ -16,10 +16,11 @@ Array<T>::Array(){
  * Creates an array of n elements initialized by default.
  * @param n number of elements in array
  */
-Array::Array(const unsigned int n){
+template <class T>
+Array<T>::Array(const unsigned int n){
 	_arr = new T[n];
 	for (int i = 0; i < n; i++)
-		_arr[i] = 0;
+		_arr[i] = T();
 	_n = n;
 }
 
@@ -28,8 +29,8 @@ Array::Array(const unsigned int n){
  * modifying either original array or its copy after copying musn't affect the other way.
  * @param a reference of Array to copy
  */
-Array::Array(const Array& a){
-	_arr = new T[n];
+template <class T>
+Array<T>::Array(const Array& a){
 	*this = a;
 }
 
@@ -38,28 +39,34 @@ Array::Array(const Array& a){
  * modifying either original array or its copy after copying musn't affect the other way.
  * @param a reference of Array to copy
  */
-Array&	Array::operator=(const Array& a){
+template <class T>
+Array<T>&	Array<T>::operator=(const Array& a){
 	if (this != &a){
-		for (int i = 0; i < n; i++)
+		delete [] _arr;
+		_arr = new T[_n];
+		for (int i = 0; i < _n; i++)
 			_arr[i] = a._arr[i];
 	}
 	return *this;
 }
 
-Array::~Array(){
-	delete _arr;
+template <class T>
+Array<T>::~Array(){
+	delete [] _arr;
 }
 
-unsigned int	Array::size() const{
+template <class T>
+unsigned int	Array<T>::size() const{
 	return _n;
 }
 
-T&	Array::operator[](unsigned int i){
-	if (i > size()){
-		throw std::out_of_range;
+template <class T>
+T&	Array<T>::operator[](unsigned int i){
+	if (i >= size() || i < 0){
+		throw std::out_of_range("Invalid range!");
 	}
 	else
-		return arr[i];
+		return _arr[i];
 }
 
 #endif
