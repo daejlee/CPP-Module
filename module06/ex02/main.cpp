@@ -37,18 +37,21 @@ void	identify(Base& P){
 	try{
 		A&	tempA = dynamic_cast<A&>(P);
 		std::cout << "A" << std::endl;
+		(void)tempA;
 	}
 	catch (std::bad_cast& e){
 	}
 	try{
 		B&	tempB = dynamic_cast<B&>(P);
 		std::cout << "B" << std::endl;
+		(void)tempB;
 	}
 	catch (std::bad_cast& e){
 	}
 	try{
 		C&	tempC = dynamic_cast<C&>(P);
 		std::cout << "C" << std::endl;
+		(void)tempC;
 	}
 	catch (std::bad_cast& e){
 	}
