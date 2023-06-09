@@ -23,18 +23,22 @@ ScalarConverter::~ScalarConverter(void){}
  * @param input raw std::string input
  */
 void	ScalarConverter::putChar(std::string input){
-	if (input.length() == 1 && isalpha(input[0])){
+	if (input.length() == 1 && isprint(input[0])){
 		std::cout << "char: '" << input[0] << "'" << std::endl;
+		putNum(input[0])
+		return ;
 	}
-	else if (input.length() == 1 && !isalpha(input[0])){
+	else if (input.length() == 1 && !isprint(input[0])){
 		std::cout << "char: Non displayable" << std::endl;
 	}
 	else{
 		double d = strtod(input.c_str(), NULL);
-		if (d == HUGE_VAL || d == -HUGE_VAL || isnan(d))
+		if (d > 2147483647 || d < -2147483648 || d != d)
 			std::cout << "char: " << "impossible" << std::endl;
-		else
+		else if (isprint(d))
 			std::cout << "char: " << static_cast<char>(d) << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
 	}
 }
 
@@ -44,7 +48,7 @@ void	ScalarConverter::putChar(std::string input){
  * @param d double type arg needs to be converted
  */
 void	ScalarConverter::putNum(double d){
-	if (d == HUGE_VAL || d == -HUGE_VAL || isnan(d))
+	if (d == HUGE_VAL || d == -HUGE_VAL || d != d)
 		std::cout << "int: " << "impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
@@ -59,6 +63,22 @@ void	ScalarConverter::putNum(double d){
  */
 void	ScalarConverter::Convert(std::string input){
 	double	d = strtod(input.c_str(), NULL);
-	putChar(input);
+	if (input.length() == 1 && isprint(input[0])){
+		std::cout << "char: '" << input[0] << "'" << std::endl;
+		putNum(input[0])
+		return ;
+	}
+	else if (input.length() == 1 && !isprint(input[0])){
+		std::cout << "char: Non displayable" << std::endl;
+	}
+	else{
+		double d = strtod(input.c_str(), NULL);
+		if (d > 2147483647 || d < -2147483648 || d != d)
+			std::cout << "char: " << "impossible" << std::endl;
+		else if (isprint(d))
+			std::cout << "char: " << static_cast<char>(d) << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
 	putNum(d);
 }
