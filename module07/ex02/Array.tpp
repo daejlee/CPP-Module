@@ -7,6 +7,7 @@
  */
 template <class T>
 Array<T>::Array(){
+	std::cout << "Array default constructor called" << std::endl;
 	_arr = new T[0];
 	_n = 0;
 }
@@ -18,8 +19,9 @@ Array<T>::Array(){
  */
 template <class T>
 Array<T>::Array(const unsigned int n){
+	std::cout << "Array input constructor called" << std::endl;
 	_arr = new T[n];
-	for (int i = 0; i < n; i++)
+	for (unsigned int i = 0; i < n; i++)
 		_arr[i] = T();
 	_n = n;
 }
@@ -31,6 +33,7 @@ Array<T>::Array(const unsigned int n){
  */
 template <class T>
 Array<T>::Array(const Array& a){
+	std::cout << "Array copy constructor called" << std::endl;
 	*this = a;
 }
 
@@ -42,9 +45,9 @@ Array<T>::Array(const Array& a){
 template <class T>
 Array<T>&	Array<T>::operator=(const Array& a){
 	if (this != &a){
-		delete [] _arr;
+		// delete [] _arr;
 		_arr = new T[_n];
-		for (int i = 0; i < _n; i++)
+		for (unsigned int i = 0; i < _n; i++)
 			_arr[i] = a._arr[i];
 	}
 	return *this;
