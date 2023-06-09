@@ -7,10 +7,9 @@ int main(void){
 	A.floatData = -5.6f;
 	A.intData = 20;
 
-	Serializer	S;
-	uintptr_t	B = S.serialize(&A);
+	uintptr_t	B = Serializer::serialize(&A);
 	std::cout << B << std::endl;
-	Data	*D_S = S.deserialize(B);
+	Data	*D_S = Serializer::deserialize(B);
 	std::cout << &A << "  :  " << D_S << std::endl;
 	std::cout << D_S->charData << std::endl;
 	std::cout << D_S->doubleData << std::endl;

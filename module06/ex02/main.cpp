@@ -31,6 +31,8 @@ void	identify(Base* P){
 		std::cout << "B" << std::endl;
 	else if (tempC)
 		std::cout << "C" << std::endl;
+	else
+		std::cout << "dynamic casting failed!" << std::endl;
 }
 
 void	identify(Base& P){
@@ -58,8 +60,8 @@ void	identify(Base& P){
 }
 
 int main(void){
-	Base *B = generate();
-	identify(B);
-	identify(*B);
+	Base *randomBase = generate();
+	identify(randomBase);
+	identify(*randomBase);
 	return (0);
 }

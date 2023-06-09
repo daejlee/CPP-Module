@@ -6,14 +6,13 @@
 
 class ScalarConverter{
 	private:
-	public:
 							ScalarConverter(void);
 							ScalarConverter(const ScalarConverter& a);
 		ScalarConverter&	operator=(const ScalarConverter& a);
 							~ScalarConverter(void);
-		void				Convert(std::string input);
-		void				putChar(std::string input, double *d);
-		void				putNum(double d, char *endptr);
+		static void			putNum(double d, char *endptr);
+	public:
+		static void			Convert(std::string input);
 };
 
 #endif

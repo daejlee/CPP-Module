@@ -5,7 +5,6 @@ int main(int argc, char **argv){
 		std::cout << "Invalid argument" << std::endl;
 		return (1);
 	}
-	ScalarConverter	c;
-	c.Convert(argv[1]);
+	ScalarConverter::Convert(argv[1]);
 	return (0);
 }
