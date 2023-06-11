@@ -3,13 +3,15 @@
 Serializer::Serializer(void){}
 
 Serializer::Serializer(const Serializer& a){
-	if (this != &a)
+	if (this != &a){
 		;
+	}
 }
 
 Serializer&	Serializer::operator=(const Serializer& a){
-		if (this != &a)
+		if (this != &a){
 			;
+		}
 		return (*this);
 }
 

@@ -9,9 +9,9 @@ class ScalarConverter{
 							ScalarConverter(void);
 							ScalarConverter(const ScalarConverter& a);
 		ScalarConverter&	operator=(const ScalarConverter& a);
-							~ScalarConverter(void);
 		static void			putNum(double d, char *endptr);
 	public:
+							~ScalarConverter(void);
 		static void			Convert(std::string input);
 };
 

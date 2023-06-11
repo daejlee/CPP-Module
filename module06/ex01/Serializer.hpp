@@ -1,6 +1,7 @@
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 # include <iostream>
+# include <stdint.h>
 
 typedef struct s_Data
 {
@@ -15,8 +16,8 @@ class Serializer{
 							Serializer(void);
 							Serializer(const Serializer& a);
 		Serializer&			operator=(const Serializer& a);
-							~Serializer(void);
 	public:
+							~Serializer(void);
 		static uintptr_t	serialize(Data* ptr);
 		static Data*		deserialize(uintptr_t raw);
 };
