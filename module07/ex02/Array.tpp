@@ -8,7 +8,7 @@
 template <class T>
 Array<T>::Array(){
 	std::cout << "Array default constructor called" << std::endl;
-	_arr = new T[0];
+	_arr = new T[]();
 	_n = 0;
 }
 
@@ -48,6 +48,11 @@ template <class T>
 Array<T>&	Array<T>::operator=(const Array& a){
 	std::cout << "assignment overload operator called" << std::endl;
 	if (this != &a){
+		if (_n != a._n){
+			delete [] _arr;
+			_arr = new T[a._n];
+			_n = a._n;
+		}
 		for (unsigned int i = 0; i < _n; i++)
 			_arr[i] = a._arr[i];
 	}

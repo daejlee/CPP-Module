@@ -1,7 +1,7 @@
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 # include <iostream>
-# include <exception>
+# include <stdexcept>
 
 template <class T>
 class Array{

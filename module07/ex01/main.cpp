@@ -1,10 +1,5 @@
 #include "iter.hpp"
 
-template <typename T>
-void	ft_print(T const &a){
-	std::cout << a << std::endl;
-}
-
 int main( void ) {   
     {
         std::cout << "[ 1 ]--------------------------------------------" << std::endl;
