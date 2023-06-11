@@ -3,9 +3,15 @@
 # include <iostream>
 
 template <typename T>
-void iter(T *arrAddress, const unsigned int arrLength, T (*func)(T)){
+void iter(const T *arrAddress, const unsigned int arrLength, void (*func)(const T&)){
 	for (unsigned int i = 0; i < arrLength; i++)
-		arrAddress[i] = func(arrAddress[i]);
+		func(arrAddress[i]);
+}
+
+template <typename T>
+void iter(T *arrAddress, const unsigned int arrLength, void (*func)(T&)){
+	for (unsigned int i = 0; i < arrLength; i++)
+		func(arrAddress[i]);
 }
 
 #endif
