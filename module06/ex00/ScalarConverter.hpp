@@ -2,7 +2,6 @@
 # define SCALARCONVERTER_HPP
 # include <iostream>
 # include <cstdlib>
-# include <cmath>
 
 class ScalarConverter{
 	private:
