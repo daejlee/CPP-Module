@@ -30,7 +30,7 @@ void	ScalarConverter::putNum(double d, char *endptr){
 		std::cout << "double: " << "impossible" << std::endl;
 	}
 	else{
-		if (d > 2147483647 || d < -2147483648)
+		if (d > 2147483647 || d < -2147483648 || d != d)
 			std::cout << "int: " << "impossible" << std::endl;
 		else
 			std::cout << "int: " << static_cast<int>(d) << std::endl;

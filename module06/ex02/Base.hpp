@@ -2,7 +2,6 @@
 # define BASE_HPP
 # include <iostream>
 # include <cstdlib>
-# include <typeinfo>
 
 class Base{
 	private:

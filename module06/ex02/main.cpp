@@ -32,7 +32,7 @@ void	identify(Base* P){
 	else if (tempC)
 		std::cout << "C" << std::endl;
 	else
-		std::cout << "dynamic casting failed!" << std::endl;
+		std::cout << "Base" << std::endl;
 }
 
 void	identify(Base& P){
@@ -60,7 +60,7 @@ void	identify(Base& P){
 	}
 	catch (std::bad_cast& e){
 	}
-	std::cout << "dynamic casting failed!" << std::endl;
+	std::cout << "Base" << std::endl;
 }
 
 int main(void){
