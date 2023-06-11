@@ -34,6 +34,8 @@ Array<T>::Array(const unsigned int n){
 template <class T>
 Array<T>::Array(const Array& a){
 	std::cout << "Array copy constructor called" << std::endl;
+	_arr = new T[a._n];
+	_n = a._n;
 	*this = a;
 }
 
@@ -44,9 +46,8 @@ Array<T>::Array(const Array& a){
  */
 template <class T>
 Array<T>&	Array<T>::operator=(const Array& a){
+	std::cout << "assignment overload operator called" << std::endl;
 	if (this != &a){
-		// delete [] _arr;
-		_arr = new T[_n];
 		for (unsigned int i = 0; i < _n; i++)
 			_arr[i] = a._arr[i];
 	}
