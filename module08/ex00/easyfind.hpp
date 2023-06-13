@@ -4,21 +4,22 @@
 # include <vector>
 # include <list>
 # include <deque>
+# include <stdexcept>
 
 /*!
  * @brief
  * Find the first occurrence of a key in T
  * @param intContainer container of integers
  * @param key value to search for in intContainer
- * @return resulting iterator if occurrence exists, NULL if it doesn't
+ * @return resulting iterator if occurrence exists, throw exception if it doesn't
  */
 template <typename T>
 typename std::vector<T>::const_iterator easyfind(std::vector<T> &intContainer, const int &key){
     typename std::vector<T>::const_iterator res = std::find(intContainer.begin(), intContainer.begin() + intContainer.size(), key);
-    if (res != intContainer.end())
+    if (res != intContainer.end() || *res == *intContainer.end())
         return res;
     else
-        return intContainer.end();
+        throw std::out_of_range("key is not found within container");
 }
 
 /*!
@@ -26,7 +27,7 @@ typename std::vector<T>::const_iterator easyfind(std::vector<T> &intContainer, c
  * Find the first occurrence of a key in T
  * @param intContainer container of integers
  * @param key value to search for in intContainer
- * @return resulting iterator if occurrence exists, NULL if it doesn't
+ * @return resulting iterator if occurrence exists, throw exception if it doesn't
  */
 template <typename T>
 typename std::list<T>::const_iterator easyfind(std::list<T> &intContainer, const int &key){
@@ -34,7 +35,7 @@ typename std::list<T>::const_iterator easyfind(std::list<T> &intContainer, const
     if (res != intContainer.end())
         return res;
     else
-        return intContainer.end();
+        throw std::out_of_range("key is not found within container");
 }
 
 /*!
@@ -42,7 +43,7 @@ typename std::list<T>::const_iterator easyfind(std::list<T> &intContainer, const
  * Find the first occurrence of a key in T
  * @param intContainer container of integers
  * @param key value to search for in intContainer
- * @return resulting iterator if occurrence exists, NULL if it doesn't
+ * @return resulting iterator if occurrence exists, throw exception if it doesn't
  */
 template <typename T>
 typename std::deque<T>::const_iterator easyfind(std::deque<T> &intContainer, const int &key){
@@ -50,7 +51,7 @@ typename std::deque<T>::const_iterator easyfind(std::deque<T> &intContainer, con
     if (res != intContainer.end())
         return res;
     else
-        return intContainer.end();
+        throw std::out_of_range("key is not found within container");
 }
 
 #endif

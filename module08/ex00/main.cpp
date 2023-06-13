@@ -10,8 +10,14 @@ int main(){
         l.push_back(i);
         d.push_back(i);
     }
-    std::cout << *easyfind(v, 9) << std::endl;
-    std::cout << *easyfind(l, 7) << std::endl;
-    std::cout << *easyfind(d, 0) << std::endl;
+    try{
+        std::cout << *easyfind(v, 9) << std::endl;
+        std::cout << *easyfind(l, 7) << std::endl;
+        std::cout << *easyfind(d, 0) << std::endl;
+        std::cout << *easyfind(d, 20) << std::endl;
+    }
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
     return 0;
 }
