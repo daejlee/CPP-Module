@@ -1,5 +1,4 @@
 #include "easyfind.hpp"
-#include <iostream>
 
 int main(){
     std::vector<int> v;

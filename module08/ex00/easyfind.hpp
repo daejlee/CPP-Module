@@ -5,6 +5,7 @@
 # include <list>
 # include <deque>
 # include <stdexcept>
+# include <iostream>
 
 /*!
  * @brief
@@ -19,7 +20,7 @@ typename std::vector<T>::const_iterator easyfind(std::vector<T> &intContainer, c
     if (res != intContainer.end() || *res == *intContainer.end())
         return res;
     else
-        throw std::out_of_range("key is not found within container");
+        throw std::out_of_range("key is not found within container!");
 }
 
 /*!
@@ -35,7 +36,7 @@ typename std::list<T>::const_iterator easyfind(std::list<T> &intContainer, const
     if (res != intContainer.end())
         return res;
     else
-        throw std::out_of_range("key is not found within container");
+        throw std::out_of_range("key is not found within container!");
 }
 
 /*!
@@ -51,7 +52,7 @@ typename std::deque<T>::const_iterator easyfind(std::deque<T> &intContainer, con
     if (res != intContainer.end())
         return res;
     else
-        throw std::out_of_range("key is not found within container");
+        throw std::out_of_range("key is not found within container!");
 }
 
 #endif
