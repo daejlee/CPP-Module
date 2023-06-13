@@ -32,7 +32,23 @@ void    Span::addNumber(int newVal){
     if (_vec.size() <= _n)
         _vec.push_back(newVal);
     else
-        throw ;
+        throw std::length_error("Exceeded span size!");
+}
+
+/*!
+ * @brief
+ * Fill Span with n random interger values.
+ * Throw exception if n exceeds Span size.
+ * @param n number of integer value to fill the Span with.
+ */
+void    Span::fillSpan(unsigned int n){
+    if (n > _n - _vec.size())
+        throw std::length_error("Exceeded span size!");
+    int* arr = new int[n];
+    srand(time(NULL));
+    for (unsigned int i = 0; i < n; i++)
+        arr[i] = rand();
+    _vec.insert(_vec.end(), arr, arr + n);
 }
 
 /*!
@@ -43,7 +59,7 @@ void    Span::addNumber(int newVal){
  */
 unsigned int     Span::shortestSpan(){
     if (_vec.size() == 1 || _vec.size() == 0)
-        throw ;
+        throw std::out_of_range("Span doesn't have enough elements!");
     
     std::sort(_vec.begin(), _vec.end());
     std::vector<int>::iterator  iter = _vec.begin() + 1;
@@ -65,7 +81,7 @@ unsigned int     Span::shortestSpan(){
  */
 unsigned int     Span::longestSpan(){
     if (_vec.size() == 1 || _vec.size() == 0)
-        throw ;
+        throw std::out_of_range("Span doesn't have enough elements!");
 
     std::sort(_vec.begin(), _vec.end());
     std::vector<int>::iterator  iter = _vec.begin() + 1;

@@ -3,6 +3,9 @@
 # include <algorithm>
 # include <iostream>
 # include <vector>
+# include <stdexcept>
+# include <ctime>
+# include <cstdlib>
 
 class Span
 {
@@ -16,6 +19,7 @@ public:
                                 ~Span();
     Span&                       operator=(const Span &a);
     void                        addNumber(int newVal);
+    void                        fillSpan(unsigned int n);
     unsigned int                shortestSpan();
     unsigned int                longestSpan();
 };
