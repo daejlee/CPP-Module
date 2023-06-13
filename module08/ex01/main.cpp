@@ -2,11 +2,16 @@
 #include <iostream>
 
 int main(){
-    Span sp = Span(5);
+    Span sp = Span(10000);
+    Span buf_sp;
 
-    sp.fillSpan(5);
+    sp.fillSpan(10000);
+    
+    buf_sp = sp;
 
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
+    std::cout << buf_sp.shortestSpan() << std::endl;
+    std::cout << buf_sp.longestSpan() << std::endl;
     return 0;
 }
