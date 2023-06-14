@@ -58,14 +58,14 @@ void    Span::fillSpan(unsigned int n){
  * If there are no numbers stored,or only one, no span can be found. Thus, throw an exception.
  * @return Shortest span between all the numbers.
  */
-unsigned int     Span::shortestSpan(){
+int     Span::shortestSpan(){
     if (_vec.size() == 1 || _vec.size() == 0)
         throw std::out_of_range("Span doesn't have enough elements!");
     
     std::sort(_vec.begin(), _vec.end());
     std::vector<int>::iterator  iter = _vec.begin() + 1;
     
-    unsigned int    ret = *iter - *(iter - 1);
+    int    ret = *iter - *(iter - 1);
     while (iter != _vec.end()){
         if (std::abs(*iter - *(iter - 1)) < ret)
             ret = std::abs(*iter - *(iter - 1));
@@ -80,14 +80,14 @@ unsigned int     Span::shortestSpan(){
  * If there are no numbers stored,or only one, no span can be found. Thus, throw an exception.
  * @return Longest span between all the numbers.
  */
-unsigned int     Span::longestSpan(){
+int     Span::longestSpan(){
     if (_vec.size() == 1 || _vec.size() == 0)
         throw std::out_of_range("Span doesn't have enough elements!");
 
     std::sort(_vec.begin(), _vec.end());
     std::vector<int>::iterator  iter = _vec.begin() + 1;
     
-    unsigned int    ret = 0;
+    int    ret = 0;
     while (iter != _vec.end()){
         if (std::abs(*iter - *(iter - 1)) > ret)
             ret = std::abs(*iter - *(iter - 1));

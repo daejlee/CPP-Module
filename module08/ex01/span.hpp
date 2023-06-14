@@ -20,8 +20,8 @@ public:
     Span&                       operator=(const Span &a);
     void                        addNumber(int newVal);
     void                        fillSpan(unsigned int n);
-    unsigned int                shortestSpan();
-    unsigned int                longestSpan();
+    int                         shortestSpan();
+    int                         longestSpan();
 };
 
 #endif
