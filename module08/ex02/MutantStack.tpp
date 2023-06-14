@@ -15,7 +15,7 @@ MutantStack<T, Container>::MutantStack(const MutantStack& a) : std::stack<T, Con
 template <class T, class Container>
 MutantStack<T, Container>&	MutantStack<T, Container>::operator=(const MutantStack& a){
 	std::cout << "MutantStack assignment operator overloading called." << std::endl;
-	a.begin();
+	this->c = a.c;
 	return *this;
 }
 
