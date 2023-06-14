@@ -37,18 +37,25 @@ void    Span::addNumber(int newVal){
 
 /*!
  * @brief
- * Fill Span with n random interger values.
- * Throw exception if n exceeds Span size.
- * @param n number of integer value to fill the Span with.
+ * Generate single integer number.
+ * @param ret integer that generated
  */
-void    Span::fillSpan(unsigned int n){
-    if (n > _n)
-        throw std::length_error("Exceeded span size!");
-    std::vector<int>    vec_buf(n, 0);
+int getRandomNumber(){
+    int ret = rand();
+    if (ret % 2)
+        ret *= -1;
+    return (ret);
+}
+
+/*!
+ * @brief
+ * Fill Span with random interger values.
+ */
+void    Span::fillSpan(){
+    std::vector<int>    vec_buf(_n, 0);
     srand(time(NULL));
-    std::generate(vec_buf.begin(), vec_buf.end(), rand);
+    std::generate(vec_buf.begin(), vec_buf.end(), getRandomNumber);
     _vec = vec_buf;
-    _n = n;
 }
 
 /*!
@@ -57,7 +64,7 @@ void    Span::fillSpan(unsigned int n){
  * If there are no numbers stored,or only one, no span can be found. Thus, throw an exception.
  * @return Shortest span between all the numbers.
  */
-int     Span::shortestSpan(){
+unsigned int     Span::shortestSpan(){
     if (_vec.size() == 1 || _vec.size() == 0)
         throw std::out_of_range("Span doesn't have enough elements!");
     
@@ -70,7 +77,7 @@ int     Span::shortestSpan(){
             ret = std::abs(*iter - *(iter - 1));
         iter++;
     }
-    return ret;
+    return static_cast<unsigned int>(ret);
 }
 
 /*!
@@ -79,18 +86,11 @@ int     Span::shortestSpan(){
  * If there are no numbers stored,or only one, no span can be found. Thus, throw an exception.
  * @return Longest span between all the numbers.
  */
-int     Span::longestSpan(){
+unsigned int     Span::longestSpan(){
     if (_vec.size() == 1 || _vec.size() == 0)
         throw std::out_of_range("Span doesn't have enough elements!");
 
     std::sort(_vec.begin(), _vec.end());
-    std::vector<int>::iterator  iter = _vec.begin() + 1;
-    
-    int    ret = 0;
-    while (iter != _vec.end()){
-        if (std::abs(*iter - *(iter - 1)) > ret)
-            ret = std::abs(*iter - *(iter - 1));
-        iter++;
-    }
+    unsigned int ret = *(_vec.end() - 1) - *_vec.begin();
     return ret;
 }

@@ -5,7 +5,7 @@ int main(){
     Span sp = Span(10000);
     Span buf_sp;
 
-    sp.fillSpan(10000);
+    sp.fillSpan();
     
     buf_sp = sp;
 

@@ -19,9 +19,11 @@ public:
                                 ~Span();
     Span&                       operator=(const Span &a);
     void                        addNumber(int newVal);
-    void                        fillSpan(unsigned int n);
-    int                         shortestSpan();
-    int                         longestSpan();
+    void                        fillSpan();
+    unsigned int                shortestSpan();
+    unsigned int                longestSpan();
 };
+
+int getRandomNumber();
 
 #endif
