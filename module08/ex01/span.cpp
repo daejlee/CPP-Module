@@ -42,14 +42,13 @@ void    Span::addNumber(int newVal){
  * @param n number of integer value to fill the Span with.
  */
 void    Span::fillSpan(unsigned int n){
-    if (n > _n - _vec.size())
+    if (n > _n)
         throw std::length_error("Exceeded span size!");
-    int* arr = new int[n];
+    std::vector<int>    vec_buf(n, 0);
     srand(time(NULL));
-    for (unsigned int i = 0; i < n; i++)
-        arr[i] = rand();
-    _vec.insert(_vec.end(), arr, arr + n);
-    delete [] arr;
+    std::generate(vec_buf.begin(), vec_buf.end(), rand);
+    _vec = vec_buf;
+    _n = n;
 }
 
 /*!
@@ -65,7 +64,7 @@ int     Span::shortestSpan(){
     std::sort(_vec.begin(), _vec.end());
     std::vector<int>::iterator  iter = _vec.begin() + 1;
     
-    int    ret = *iter - *(iter - 1);
+    int    ret = std::abs(*iter - *(iter - 1));
     while (iter != _vec.end()){
         if (std::abs(*iter - *(iter - 1)) < ret)
             ret = std::abs(*iter - *(iter - 1));
