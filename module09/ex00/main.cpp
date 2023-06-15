@@ -7,6 +7,7 @@ int main(int argc, char **argv){
     }
     BitcoinExchange Bob;
     argc = 0;
-    Bob.getData(argv[1]);
+    Bob.exchange(argv[1]);
+
     return 0;
 }

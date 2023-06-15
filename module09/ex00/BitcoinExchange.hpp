@@ -7,6 +7,7 @@
 # include <iostream>
 # include <fstream>
 # include <cstring>
+# include <sstream>
 
 /*
 1.  import data and save date, exchange rate as map
@@ -20,14 +21,15 @@ class BitcoinExchange
 {
     private:
         std::map<std::string, double>   _dateRate;
-        std::map<std::string, double>   _dateValue;
     public:
                                         BitcoinExchange();
                                         BitcoinExchange(const BitcoinExchange &obj);
         BitcoinExchange&                operator=(const BitcoinExchange &obj);
                                         ~BitcoinExchange();
-        void                            getData(std::string input);
-        std::map<std::string, double>   readFile(std::ifstream &s, const char* delimeter);
+        std::map<std::string, double>   readDB(std::ifstream &s);
+        void                            display(std::ifstream& s);
+        bool                            inspectData(std::string date, double value);
+        void                            exchange(std::string input);
 };
 
 #endif
