@@ -22,8 +22,7 @@ public:
     void                        fillSpan();
     unsigned int                shortestSpan();
     unsigned int                longestSpan();
+    static int                  getRandomNumber();
 };
-
-int getRandomNumber();
 
 #endif

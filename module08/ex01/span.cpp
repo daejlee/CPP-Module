@@ -40,7 +40,7 @@ void    Span::addNumber(int newVal){
  * Generate single integer number.
  * @param ret integer that generated
  */
-int getRandomNumber(){
+int  Span::getRandomNumber(){
     int ret = rand();
     if (ret % 2)
         ret *= -1;
