@@ -13,16 +13,16 @@
 class BitcoinExchange
 {
     private:
-        std::map<std::string, double>   _dateRate;
+        static std::map<std::string, double>    _dateRate;
+                                                BitcoinExchange();
+                                                BitcoinExchange(const BitcoinExchange &obj);
+        BitcoinExchange&                        operator=(const BitcoinExchange &obj);
+                                                ~BitcoinExchange();
     public:
-                                        BitcoinExchange();
-                                        BitcoinExchange(const BitcoinExchange &obj);
-        BitcoinExchange&                operator=(const BitcoinExchange &obj);
-                                        ~BitcoinExchange();
-        std::map<std::string, double>   readDB(std::ifstream &s);
-        void                            display(std::ifstream& s);
-        void                            inspectData(std::string date, std::string value);
-        void                            exchange(const char* inputFileName);
+        static std::map<std::string, double>    readDB(std::ifstream &s);
+        static void                             display(std::ifstream& s);
+        static void                             inspectData(std::string date, std::string value);
+        static void                             exchange(const char* inputFileName);
 };
 
 #endif

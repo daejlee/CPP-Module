@@ -1,5 +1,7 @@
 #include "BitcoinExchange.hpp"
 
+std::map<std::string, double>    BitcoinExchange::_dateRate;
+
 BitcoinExchange::BitcoinExchange(){}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj){*this = obj;}
