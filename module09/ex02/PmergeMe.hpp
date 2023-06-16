@@ -8,13 +8,16 @@
 class PmergeMe
 {
     private:
-        std::vector<int>        _vec;
+        std::vector<int>                    _vec;
+        std::vector<std::pair<int, int> >   _pairVec;
     public:
                                 PmergeMe();
                                 PmergeMe(const PmergeMe& obj);
         PmergeMe&               operator=(const PmergeMe& obj);
                                 ~PmergeMe();
-        void                    launchSort(std::string input);
+        void                    push_vec(char **args);
+        void                    push_pair();
+        void                    launchSort(char **args);
 };
 
 #endif
