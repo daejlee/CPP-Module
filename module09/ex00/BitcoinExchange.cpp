@@ -12,111 +12,110 @@ BitcoinExchange&    BitcoinExchange::operator=(const BitcoinExchange &obj){
 
 BitcoinExchange::~BitcoinExchange(){}
 
-
-/*
-- 파일 안의 각 줄은 다음 포맷을 따라야 한다: `"date | value"`
-- 유효한 날짜는 언제나 다음 포맷에 존재해야 한다: `Year-Month-Day`
-- 유효한 값은 0과 1000사이의 float 혹은 양의 정수여야 한다.
-- 2009-01-02(| or ,)45144.79
-    - year:     > 0
-    - month:    01 ~ 12
-    - day:      01 ~ 31
-    - rate:     >= 0
-    - leapyear  feb
-    - 
-*/
-
-bool    BitcoinExchange::inspectData(std::string date, std::string value){
-    std::stringstream   ss(date);
+/*!
+ * @brief
+ * Inspect single "date | value" line, throw exception if data invalid.
+ * @param dateBuf std::string date buffer
+ * @param valBuf std::string value buffer
+ */
+void    BitcoinExchange::inspectData(std::string dateBuf, std::string valBuf){
+    double val = std::atof(valBuf.c_str());
+    std::stringstream   ss(dateBuf);
     std::string         token;
     int                 inspectionDate;
 
+    if (dateBuf == valBuf)
+        throw std::invalid_argument("Error: bad input => " + dateBuf);
+    if (val < 0)
+        throw std::out_of_range("Error: not a positive number.");
+    else if (val > 1000)
+        throw std::out_of_range("Error: too large number.");
     for (int i = 0; i < 3; i++){
         std::getline(ss, token, '-');
-        inspectionDate = std::stoi(token);
-        if (inspectionDate <= 0){
-            std::cout << "Error: not a positive number." << std::endl;
-            return false;
-        }
-        else if ((doubleBuf - inspectionDate) || 
+        inspectionDate = std::atoi(token.c_str());
+        if (inspectionDate <= 0)
+            throw std::invalid_argument("Error: not a positive number");
+        else if ((std::atof(token.c_str()) - inspectionDate) || 
                 (i == 1 && inspectionDate > 12) || 
                 (i == 2 && inspectionDate > 31)){
-            std::cout << "Error: bad input => " << date << std::endl;
-            return false;
+            throw std::invalid_argument("Error: bad input => " + dateBuf);
         }
     }
-    double val = std::stod(value);
-    if (val < 0){
-        std::cout << "Error: not a positive number." << std::endl;
-        return false;
-    }
-    else if (val > 1000){
-        std::cout << "Error: too large number." << std::endl;
-        return false;
-    }
-    return true;
 }
 
-void   BitcoinExchange::display(std::ifstream& s){
+/*!
+ * @brief
+ * Show exchanged rates on stdout.
+ * @param inputStream std::ifstream of input.txt
+ */
+void    BitcoinExchange::display(std::ifstream& inputStream){
     std::string buf;
     std::string dateBuf;
-    std::string valueBuf;
-    double      value;
-    char        *buf;
+    std::string valBuf;
+    double      val;
 
-    std::getline(s, buf);
+    std::getline(inputStream, buf);
     if (buf.compare("date | value"))
         throw std::invalid_argument("Error: csv header missing.");
-    while (!s.eof()){
-        std::getline(s, buf);
+
+    while (!inputStream.eof()){
+        std::getline(inputStream, buf);
         if (!buf[0])
             break ;
-        dateBuf = buf.substr(0, buf.find(','));
-        valueBuf = buf.substr(buf.find(',') + 1);
-        inspectData(dateBuf, valueBuf);
-        value = std::stod(valueBuf);
-        std::cout << date << " => " << value << " = ";
-        if (_dateRate.find(dateBuf) != _dateRate.end())
-            std::cout << _dateRate[dateBuf] * value << std::endl;
-        else{
-            _dateRate[dateBuf] = 0;
-            std::map<std::string, double>::iterator it = _dateRate.upper_bound(dateBuf);
-            if (it == _dateRate.begin())
-                throw std::out_of_range("Error: date too early!");
-            else
-                std::cout << it->second * value << std::endl;
-            _dateRate.erase(_dateRate.find(dateBuf));
+        dateBuf = buf.substr(0, buf.find('|'));
+        valBuf = buf.substr(buf.find('|') + 1);
+        try{
+            inspectData(dateBuf, valBuf);
+            val = std::atof(valBuf.c_str());
+            if (_dateRate.find(dateBuf) != _dateRate.end())
+                std::cout << dateBuf << " => " << val << " = " << _dateRate[dateBuf] * val << std::endl;
+            else{
+                std::map<std::string, double>::iterator it = _dateRate.upper_bound(dateBuf);
+                if (it == _dateRate.begin())
+                    throw std::out_of_range("Error: date too early! => " + dateBuf);
+                it--;
+                std::cout << dateBuf << " => " << val << " = " << it->second * val << std::endl;
+            }
         }
+        catch(std::exception &e){std::cerr << e.what() << std::endl;}
     }
 }
 
-std::map<std::string, double>   BitcoinExchange::readDB(std::ifstream& s){
+/*!
+ * @brief
+ * Read data from data.csv and save it as std::map<string, double> form.
+ * @param inputStream std::ifstream of data.csv
+ */
+std::map<std::string, double>   BitcoinExchange::readDB(std::ifstream& inputStream){
     std::string buf;
     std::string dateBuf;
     std::string rateBuf;
-    double      value;
+    double      val;
     std::map<std::string, double>   ret;
 
-    std::getline(s, buf);
-    while (!s.eof()){
-        std::getline(s, buf);
+    std::getline(inputStream, buf);
+    while (!inputStream.eof()){
+        std::getline(inputStream, buf);
         if (!buf[0])
             break ;
         dateBuf = buf.substr(0, buf.find(','));
         rateBuf = buf.substr(buf.find(',') + 1);
-        value = std::stod(rateBuf);
-        ret[dateBuf] = value;
+        val = std::atof(rateBuf.c_str());
+        ret[dateBuf] = val;
     }
     return ret;
 }
 
-void    BitcoinExchange::exchange(std::string input){
+/*!
+ * @brief
+ * Exchange input.txt with data.csv and display on stdout.
+ * @param inputFileName file name of input ex.) input.txt
+ */
+void    BitcoinExchange::exchange(const char* inputFileName){
     std::ifstream   dataStream("data.csv");
-    std::ifstream   inputStream(input);
-    if (!dataStream || !inputStream){
-        std::cout << "Error: could not open file." << std::endl;
-        return ;
-    }
+    std::ifstream   inputStream(inputFileName);
+    if (!dataStream.is_open() || !inputStream.is_open())
+        throw std::runtime_error("Error: could not open file.");
     _dateRate = readDB(dataStream);
     display(inputStream);
 }
