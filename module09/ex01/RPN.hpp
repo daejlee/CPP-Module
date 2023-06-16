@@ -7,7 +7,7 @@
 class RPN
 {
     private:
-        std::stack<int>         _stk;
+        std::stack<double>      _stk;
     public:
                                 RPN();
                                 RPN(const RPN& obj);
