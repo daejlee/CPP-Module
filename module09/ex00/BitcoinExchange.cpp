@@ -29,23 +29,12 @@ BitcoinExchange::~BitcoinExchange(){}
 bool    BitcoinExchange::inspectData(std::string date, std::string value){
     std::stringstream   ss(date);
     std::string         token;
-    double              doubleBuf;
     int                 inspectionDate;
-    char                **endptr = NULL;
 
-    if (value < 0){
-        std::cout << "Error: not a positive number." << std::endl;
-        return false;
-    }
-    else if (value > 1000){
-        std::cout << "Error: too large number." << std::endl;
-        return false;
-    }
     for (int i = 0; i < 3; i++){
         std::getline(ss, token, '-');
-        doubleBuf = strtod(token.c_str(), endptr);
-        inspectionDate = static_cast<int>(doubleBuf);
-        if (doubleBuf <= 0){
+        inspectionDate = std::stoi(token);
+        if (inspectionDate <= 0){
             std::cout << "Error: not a positive number." << std::endl;
             return false;
         }
@@ -56,59 +45,67 @@ bool    BitcoinExchange::inspectData(std::string date, std::string value){
             return false;
         }
     }
+    double val = std::stod(value);
+    if (val < 0){
+        std::cout << "Error: not a positive number." << std::endl;
+        return false;
+    }
+    else if (val > 1000){
+        std::cout << "Error: too large number." << std::endl;
+        return false;
+    }
     return true;
 }
 
 void   BitcoinExchange::display(std::ifstream& s){
     std::string buf;
-    std::string date;
-    std::string value;
-    char        **endptr = NULL;
+    std::string dateBuf;
+    std::string valueBuf;
+    double      value;
     char        *buf;
 
     std::getline(s, buf);
-    if (buf.compare("date | value")){
-        std::cerr << "Error: csv header missing." << std::endl;
-        return ;
-    }
+    if (buf.compare("date | value"))
+        throw std::invalid_argument("Error: csv header missing.");
     while (!s.eof()){
         std::getline(s, buf);
         if (!buf[0])
             break ;
-        date = buf.substr(0, buf.find(','));
-        value = buf.substr(buf.find(',') + 1);
-        if (inspectData(date, value)){
-            std::cout << date << " => " << value << " = ";
-            if (_dateRate.find(date) != _dateRate.end())
-                std::cout << _dateRate[date] * value << std::endl;
-            else{
-                _dateRate[date] = 0;
-                std::map<std::string, double>::iterator it = _dateRate.upper_bound(date);
-                if (it == _dateRate.begin())
-                    std::cerr << "Error: date too early => " << date << std::endl;
-                else
-                    std::cout << it->second * value << std::endl;
-                _dateRate.erase(_dateRate.find(date));
-            }
+        dateBuf = buf.substr(0, buf.find(','));
+        valueBuf = buf.substr(buf.find(',') + 1);
+        inspectData(dateBuf, valueBuf);
+        value = std::stod(valueBuf);
+        std::cout << date << " => " << value << " = ";
+        if (_dateRate.find(dateBuf) != _dateRate.end())
+            std::cout << _dateRate[dateBuf] * value << std::endl;
+        else{
+            _dateRate[dateBuf] = 0;
+            std::map<std::string, double>::iterator it = _dateRate.upper_bound(dateBuf);
+            if (it == _dateRate.begin())
+                throw std::out_of_range("Error: date too early!");
+            else
+                std::cout << it->second * value << std::endl;
+            _dateRate.erase(_dateRate.find(dateBuf));
         }
     }
 }
 
 std::map<std::string, double>   BitcoinExchange::readDB(std::ifstream& s){
-    char        arr[256];
-    std::string date;
+    std::string buf;
+    std::string dateBuf;
+    std::string rateBuf;
     double      value;
-    char        **endptr = NULL;
     std::map<std::string, double>   ret;
 
-    s.getline(arr, 256);
+    std::getline(s, buf);
     while (!s.eof()){
-        s.getline(arr, 256);
-        if (!arr[0])
+        std::getline(s, buf);
+        if (!buf[0])
             break ;
-        date = strtok(arr, ",");
-        value = strtod(strtok(NULL, ","), endptr);
-        ret[date] = value;
+        dateBuf = buf.substr(0, buf.find(','));
+        rateBuf = buf.substr(buf.find(',') + 1);
+        value = std::stod(rateBuf);
+        ret[dateBuf] = value;
     }
     return ret;
 }
