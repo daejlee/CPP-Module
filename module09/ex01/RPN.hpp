@@ -7,13 +7,14 @@
 class RPN
 {
     private:
-        std::stack<double>      _stk;
+        static std::stack<double>       _stk;
+                                        RPN();
+                                        RPN(const RPN& obj);
+        RPN&                            operator=(const RPN& obj);
+                                        ~RPN();
     public:
-                                RPN();
-                                RPN(const RPN& obj);
-        RPN&                    operator=(const RPN& obj);
-                                ~RPN();
-        void                    calc(const char* str);
+        static void                     calc(const std::string& str);
+        static int                      isArithmeticToken(char c);
 };
 
 #endif

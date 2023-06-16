@@ -6,7 +6,6 @@ int main(int argc, char **argv){
         return 0;
     }
     argc = 0;
-    RPN R;
-    R.calc(argv[1]);
+    RPN::calc(argv[1]);
     return 0;
 }

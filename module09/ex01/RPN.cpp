@@ -7,6 +7,8 @@ enum type{
     MUL
 };
 
+std::stack<double> RPN::_stk;
+
 RPN::RPN(){}
 
 RPN::RPN(const RPN& obj){*this = obj;}
@@ -19,7 +21,7 @@ RPN& RPN::operator=(const RPN& obj){
 
 RPN::~RPN(){}
 
-int isArithmeticToken(char c){
+int RPN::isArithmeticToken(char c){
     const char  arr[4] = {'+', '-', '/', '*'};
     for (int i = 0; i < 4; i++){
         if (arr[i] == c)
@@ -28,10 +30,10 @@ int isArithmeticToken(char c){
     return -1;
 }
 
-void    RPN::calc(const char* str){
+void    RPN::calc(const std::string& str){
     char    cur;
     
-    for (size_t i = 0; i < strlen(str); i++){
+    for (size_t i = 0; i < str.size(); i++){
         cur = str[i];
         if (isdigit(cur))
             _stk.push(cur - 48);
