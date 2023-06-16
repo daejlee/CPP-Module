@@ -114,10 +114,17 @@ std::map<std::string, double>   BitcoinExchange::readDB(std::ifstream& inputStre
  * @param inputFileName file name of input ex.) input.txt
  */
 void    BitcoinExchange::exchange(const char* inputFileName){
-    std::ifstream   dataStream("data.csv");
+    std::ifstream   dataStream("./data.csv");
     std::ifstream   inputStream(inputFileName);
-    if (!dataStream.is_open() || !inputStream.is_open())
+
+    if (!dataStream.is_open() || !inputStream.is_open()){
+        dataStream.close();
+        inputStream.close();
         throw std::runtime_error("Error: could not open file.");
+    }
     _dateRate = readDB(dataStream);
-    display(inputStream);
+    try{display(inputStream);}
+    catch(std::exception &e){std::cerr << e.what() << std::endl;}
+    dataStream.close();
+    inputStream.close();
 }
