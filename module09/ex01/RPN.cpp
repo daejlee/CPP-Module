@@ -1,5 +1,9 @@
 #include "RPN.hpp"
 
+/*!
+ * @brief
+ * Arithmetic Token enum
+ */
 enum type{
     PLUS,
     MINUS,
@@ -21,6 +25,11 @@ RPN& RPN::operator=(const RPN& obj){
 
 RPN::~RPN(){}
 
+/*!
+ * @brief
+ * Check if parameter is Arithmetic Token ex) +, -, /, *
+ * @param c char val to check
+ */
 int RPN::isArithmeticToken(char c){
     const char  arr[4] = {'+', '-', '/', '*'};
     for (int i = 0; i < 4; i++){
@@ -30,6 +39,11 @@ int RPN::isArithmeticToken(char c){
     return -1;
 }
 
+/*!
+ * @brief
+ * Calculate parameter with Reverse Polish Notation
+ * @param str string to process calculation
+ */
 void    RPN::calc(const std::string& str){
     char    cur;
     
