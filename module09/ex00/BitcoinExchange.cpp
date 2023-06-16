@@ -14,6 +14,72 @@ BitcoinExchange&    BitcoinExchange::operator=(const BitcoinExchange &obj){
 
 BitcoinExchange::~BitcoinExchange(){}
 
+
+/*!
+ * @brief
+ * Inspect value from "date | value" line, throw exception if data invalid.
+ * @param valBuf std::string value buffer
+ */
+void    BitcoinExchange::inspectVal(std::string valBuf){
+    bool    dotFlag = false;
+    if (valBuf[0] == '.')
+        throw std::invalid_argument("Error: value starts with dot.");
+    for (size_t i = 0; i < valBuf.size(); i++){
+        if (valBuf[i] == '.' && dotFlag == true)
+            throw std::invalid_argument("Error: more than one dot in value.");
+        else if (valBuf[i] == '.')
+            dotFlag = true;
+        else if (!isdigit(valBuf[i]))
+            throw std::invalid_argument("Error: non-number exists in value.");
+    }
+    double val = std::atof(valBuf.c_str());
+    if (val < 0)
+        throw std::out_of_range("Error: not a positive number.");
+    else if (val > 1000)
+        throw std::out_of_range("Error: too large number.");
+}
+
+/*!
+ * @brief
+ * Inspect date from "date | value" line, throw exception if data invalid.
+ * @param dateBuf std::string date buffer
+ */
+void    BitcoinExchange::inspectDate(std::string dateBuf){
+    std::stringstream   ss(dateBuf);
+    std::string         token;
+    int                 year;
+    int                 month;
+    int                 day;
+
+    if (dateBuf.size() != 10 || dateBuf[4] != '-' || dateBuf[7] != '-')
+        throw std::invalid_argument("Error: bad input => " + dateBuf);
+    for (int i = 0; i < 10; i++){
+        if (i != 4 && i != 7 && !isdigit(dateBuf[i]))
+            throw std::invalid_argument("Error: bad input => " + dateBuf);}
+    
+    std::getline(ss, token, '-');
+    year = std::atoi(token.c_str());
+    std::getline(ss, token, '-');
+    month = std::atoi(token.c_str());
+    std::getline(ss, token, '-');
+    day = std::atoi(token.c_str());
+    
+    if (month > 12 || day > 31)
+        throw std::invalid_argument("Error: bad input => " + dateBuf);
+    else if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+        throw std::invalid_argument("Error: invalid date => " + dateBuf);
+    else if (month == 2){
+		if (year % 400 == 0 && day > 29)
+				throw(std::invalid_argument("Error: invalid date(leap year) => " + dateBuf));
+		else if (year % 100 == 0 && day > 28)
+				throw(std::invalid_argument("Error: invalid date(leap year) => " + dateBuf));
+		else if (year % 4 == 0 && day > 29)
+				throw(std::invalid_argument("Error: invalid date(leap year) => " + dateBuf));
+		else if (day > 28)
+            throw(std::invalid_argument("Error: invalid date(leap year) => " + dateBuf));
+    }
+}
+
 /*!
  * @brief
  * Inspect single "date | value" line, throw exception if data invalid.
@@ -21,28 +87,10 @@ BitcoinExchange::~BitcoinExchange(){}
  * @param valBuf std::string value buffer
  */
 void    BitcoinExchange::inspectData(std::string dateBuf, std::string valBuf){
-    double val = std::atof(valBuf.c_str());
-    std::stringstream   ss(dateBuf);
-    std::string         token;
-    int                 inspectionDate;
-
     if (dateBuf == valBuf)
         throw std::invalid_argument("Error: bad input => " + dateBuf);
-    if (val < 0)
-        throw std::out_of_range("Error: not a positive number.");
-    else if (val > 1000)
-        throw std::out_of_range("Error: too large number.");
-    for (int i = 0; i < 3; i++){
-        std::getline(ss, token, '-');
-        inspectionDate = std::atoi(token.c_str());
-        if (inspectionDate <= 0)
-            throw std::invalid_argument("Error: not a positive number");
-        else if ((std::atof(token.c_str()) - inspectionDate) || 
-                (i == 1 && inspectionDate > 12) || 
-                (i == 2 && inspectionDate > 31)){
-            throw std::invalid_argument("Error: bad input => " + dateBuf);
-        }
-    }
+    inspectDate(dateBuf);
+    inspectVal(valBuf);
 }
 
 /*!
@@ -64,8 +112,8 @@ void    BitcoinExchange::display(std::ifstream& inputStream){
         std::getline(inputStream, buf);
         if (!buf[0])
             break ;
-        dateBuf = buf.substr(0, buf.find('|'));
-        valBuf = buf.substr(buf.find('|') + 1);
+        dateBuf = buf.substr(0, buf.find('|') - 1);
+        valBuf = buf.substr(buf.find('|') + 2);
         try{
             inspectData(dateBuf, valBuf);
             val = std::atof(valBuf.c_str());

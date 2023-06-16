@@ -21,6 +21,8 @@ class BitcoinExchange
     public:
         static std::map<std::string, double>    readDB(std::ifstream &s);
         static void                             display(std::ifstream& s);
+        static void                             inspectVal(std::string valBuf);
+        static void                             inspectDate(std::string dateBuf);
         static void                             inspectData(std::string date, std::string value);
         static void                             exchange(const char* inputFileName);
 };
