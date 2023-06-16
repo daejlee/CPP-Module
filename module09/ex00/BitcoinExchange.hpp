@@ -28,7 +28,7 @@ class BitcoinExchange
                                         ~BitcoinExchange();
         std::map<std::string, double>   readDB(std::ifstream &s);
         void                            display(std::ifstream& s);
-        bool                            inspectData(std::string date, double value);
+        bool                            inspectData(std::string date, std::string value);
         void                            exchange(std::string input);
 };
 
