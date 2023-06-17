@@ -4,6 +4,16 @@
 # include <iostream>
 # include <string>
 
+/*!
+ * @brief
+ * Arithmetic Token enum
+ */
+enum type{
+    PLUS,
+    MINUS,
+    DIV,
+    MUL
+};
 class RPN
 {
     private:

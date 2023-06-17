@@ -1,16 +1,5 @@
 #include "RPN.hpp"
 
-/*!
- * @brief
- * Arithmetic Token enum
- */
-enum type{
-    PLUS,
-    MINUS,
-    DIV,
-    MUL
-};
-
 std::stack<double> RPN::_stk;
 
 RPN::RPN(){}
