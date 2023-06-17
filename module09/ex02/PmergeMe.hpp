@@ -10,17 +10,21 @@
 class PmergeMe
 {
     private:
-        static std::vector<unsigned int>                               _vec;
+        static std::vector<unsigned int>    _vec;
+        static std::deque<unsigned int>     _deq;
     public:
                                             PmergeMe();
                                             PmergeMe(const PmergeMe& obj);
         PmergeMe&                           operator=(const PmergeMe& obj);
                                             ~PmergeMe();
         static void                         push_vec(char **args);
-        static std::vector<unsigned int>    push_pair(std::vector<unsigned int> vecToSort);
+        static void                         push_deq(char **args);
+        static std::vector<unsigned int>    recurSortVec(std::vector<unsigned int> vecToSort);
+        static std::deque<unsigned int>     recurSortDeq(std::deque<unsigned int> deqToSort);
         static void                         launchVecSort(char **args);
         static void                         launchDequeSort(char **args);
-        static unsigned int                 get_size();
+        static unsigned int                 getVecSize();
+        static unsigned int                 getDeqSize();
 };
 
 #endif
