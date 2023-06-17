@@ -110,11 +110,11 @@ void PmergeMe::launchVecSort(char **args){
     std::cout << "Before:   ";
     for (std::vector<unsigned int>::iterator itr = _vec.begin(); itr != _vec.end(); ++itr)
         std::cout << *itr << " ";
-    std::cout << std::endl;
+    std::cout << std::endl << "--------------------------------------------------------------------------------" << std::endl;
     std::cout << "After:   ";
     for (std::vector<unsigned int>::iterator itr = ret.begin(); itr != ret.end(); ++itr)
         std::cout << *itr << " ";
-    std::cout << std::endl;
+    std::cout << std::endl << "--------------------------------------------------------------------------------" << std::endl;
 }
 
 void PmergeMe::launchDequeSort(char **args){
@@ -123,11 +123,11 @@ void PmergeMe::launchDequeSort(char **args){
     std::cout << "Before:   ";
     for (std::deque<unsigned int>::iterator itr = _deq.begin(); itr != _deq.end(); ++itr)
         std::cout << *itr << " ";
-    std::cout << std::endl;
+    std::cout << std::endl << "--------------------------------------------------------------------------------" << std::endl;
     std::cout << "After:   ";
     for (std::deque<unsigned int>::iterator itr = ret.begin(); itr != ret.end(); ++itr)
         std::cout << *itr << " ";
-    std::cout << std::endl;
+    std::cout << std::endl << "--------------------------------------------------------------------------------" << std::endl;
 }
 
 unsigned int    PmergeMe::getVecSize(){return _vec.size();}
