@@ -135,6 +135,7 @@ void    BitcoinExchange::display(std::ifstream& inputStream){
  * @brief
  * Read data from data.csv and save it as std::map<string, double> form.
  * @param inputStream std::ifstream of data.csv
+ * @return std::map of DB that has been read
  */
 std::map<std::string, double>   BitcoinExchange::readDB(std::ifstream& inputStream){
     std::string buf;
