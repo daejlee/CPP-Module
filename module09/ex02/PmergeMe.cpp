@@ -16,6 +16,12 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& obj){
 
 PmergeMe::~PmergeMe(){}
 
+
+/*!
+ * @brief
+ * Push args into std::vec<unsigned int> _vec.
+ * @param args char** unsigned interger args
+ */
 void    PmergeMe::push_vec(char **args){
     int             testVal;
     unsigned int    val;
@@ -31,6 +37,11 @@ void    PmergeMe::push_vec(char **args){
     }
 }
 
+/*!
+ * @brief
+ * Push args into std::deque<unsigned int> _deq.
+ * @param args char** unsigned interger args
+ */
 void    PmergeMe::push_deq(char **args){
     int             testVal;
     unsigned int    val;
@@ -46,6 +57,12 @@ void    PmergeMe::push_deq(char **args){
     }
 }
 
+/*!
+ * @brief
+ * Merge sort vector
+ * @param vecToSort std::vector to sort.
+ * @return Sorted vector
+ */
 std::vector<unsigned int>    PmergeMe::recurSortVec(std::vector<unsigned int> vecToSort){
     std::vector<unsigned int>   smallVec;
     std::vector<unsigned int>   largeVec;
@@ -75,6 +92,12 @@ std::vector<unsigned int>    PmergeMe::recurSortVec(std::vector<unsigned int> ve
     return largeVec;
 }
 
+/*!
+ * @brief
+ * Merge sort deque
+ * @param deqToSort std::deque to sort.
+ * @return Sorted deque
+ */
 std::deque<unsigned int>    PmergeMe::recurSortDeq(std::deque<unsigned int> deqToSort){
     std::deque<unsigned int>   smallDeq;
     std::deque<unsigned int>   largeDeq;
@@ -104,6 +127,11 @@ std::deque<unsigned int>    PmergeMe::recurSortDeq(std::deque<unsigned int> deqT
     return largeDeq;
 }
 
+/*!
+ * @brief
+ * Launch vector sort
+ * @param args char** unsigned integer args
+ */
 void PmergeMe::launchVecSort(char **args){
     push_vec(args);
     std::vector<unsigned int>   ret = recurSortVec(_vec);
@@ -117,6 +145,11 @@ void PmergeMe::launchVecSort(char **args){
     std::cout << std::endl << "--------------------------------------------------------------------------------" << std::endl;
 }
 
+/*!
+ * @brief
+ * Launch deque sort
+ * @param args char** unsigned integer args
+ */
 void PmergeMe::launchDequeSort(char **args){
     push_deq(args);
     std::deque<unsigned int>   ret = recurSortDeq(_deq);
