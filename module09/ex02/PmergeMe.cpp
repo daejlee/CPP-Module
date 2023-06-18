@@ -1,33 +1,33 @@
 #include "PmergeMe.hpp"
 
-std::vector<unsigned int>    PmergeMe::recurSortVec_temp(std::vector<unsigned int> vecToSort){
-    std::vector<unsigned int>   smallVec;
-    std::vector<unsigned int>   largeVec;
+// std::vector<unsigned int>    PmergeMe::recurSortVec_temp(std::vector<unsigned int> vecToSort){
+//     std::vector<unsigned int>   smallVec;
+//     std::vector<unsigned int>   largeVec;
 
-    for (std::vector<unsigned int>::const_iterator itr = vecToSort.begin(); itr < vecToSort.end(); itr += 2){
-        if (itr + 1 == vecToSort.end())
-            break ;
-        else if (*itr > *(itr + 1)){
-            largeVec.push_back(*itr);
-            smallVec.push_back(*(itr + 1));
-        }
-        else{
-            largeVec.push_back(*(itr + 1));
-            smallVec.push_back(*itr);
-        }
-    }
-    if (largeVec.size() > 1)
-        largeVec = recurSortVec(largeVec);
-    for (std::vector<unsigned int>::iterator itr = smallVec.begin(); itr != smallVec.end(); ++itr){
-        std::vector<unsigned int>::iterator insertValItr = std::lower_bound(largeVec.begin(), largeVec.end(), *itr);
-        largeVec.insert(insertValItr, *itr);
-    }
-    if (vecToSort.size() % 2){
-        std::vector<unsigned int>::iterator insertValItr = std::lower_bound(largeVec.begin(), largeVec.end(), *(vecToSort.end() - 1));
-        largeVec.insert(insertValItr, *(vecToSort.end() - 1));
-    }
-    return largeVec;
-}
+//     for (std::vector<unsigned int>::const_iterator itr = vecToSort.begin(); itr < vecToSort.end(); itr += 2){
+//         if (itr + 1 == vecToSort.end())
+//             break ;
+//         else if (*itr > *(itr + 1)){
+//             largeVec.push_back(*itr);
+//             smallVec.push_back(*(itr + 1));
+//         }
+//         else{
+//             largeVec.push_back(*(itr + 1));
+//             smallVec.push_back(*itr);
+//         }
+//     }
+//     if (largeVec.size() > 1)
+//         largeVec = recurSortVec(largeVec);
+//     for (std::vector<unsigned int>::iterator itr = smallVec.begin(); itr != smallVec.end(); ++itr){
+//         std::vector<unsigned int>::iterator insertValItr = std::lower_bound(largeVec.begin(), largeVec.end(), *itr);
+//         largeVec.insert(insertValItr, *itr);
+//     }
+//     if (vecToSort.size() % 2){
+//         std::vector<unsigned int>::iterator insertValItr = std::lower_bound(largeVec.begin(), largeVec.end(), *(vecToSort.end() - 1));
+//         largeVec.insert(insertValItr, *(vecToSort.end() - 1));
+//     }
+//     return largeVec;
+// }
 
 std::vector<unsigned int> PmergeMe::_vec;
 std::deque<unsigned int>  PmergeMe::_deq;
@@ -86,7 +86,7 @@ void    PmergeMe::push_deq(char **args){
     }
 }
 
-bool comp(std::pair<int, int> a, std::pair<int, int> b){return a.first < b.first;}
+bool comp(std::pair<int, int> a, std::pair<int, int> b){return a.second < b.second;}
 
 /*!
  * @brief
@@ -97,6 +97,7 @@ bool comp(std::pair<int, int> a, std::pair<int, int> b){return a.first < b.first
 std::vector<unsigned int>    PmergeMe::recurSortVec(std::vector<unsigned int> vecToSort){
     bool                        stagger;
     std::vector<std::pair<unsigned int, unsigned int> > pairVec;
+    std::vector<unsigned int>   S;
 
     if (vecToSort.size() % 2)
         stagger = true;
@@ -104,12 +105,38 @@ std::vector<unsigned int>    PmergeMe::recurSortVec(std::vector<unsigned int> ve
         if (itr + 1 == vecToSort.end())
             break ;
         else if (*itr > *(itr + 1))
-            pairVec.push_back(std::make_pair(*itr, *(itr + 1)));
-        else
             pairVec.push_back(std::make_pair(*(itr + 1), *itr));
+        else
+            pairVec.push_back(std::make_pair(*itr, *(itr + 1)));
     }
     std::sort(pairVec.begin(), pairVec.end(), comp);
-    return ;
+    for (std::vector<std::pair<unsigned int, unsigned int> >::const_iterator itr = pairVec.begin(); itr < pairVec.end(); itr++){
+        S.push_back(itr->second);
+    }
+
+    unsigned int    curJIdx = 0;
+    unsigned int    lastJIdx = 0;
+    unsigned int    idx = 0;
+    unsigned int    offset = 0;
+    unsigned int    size = pairVec.size();
+	size_t jacobsthal[20] = {1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763, 349525};
+    while (idx < size){
+        if (idx == jacobsthal[curJIdx]){
+            for (unsigned int i = lastJIdx; i <= curJIdx; i++){
+                std::vector<unsigned int>::iterator insertValItr = std::lower_bound(S.begin(), S.begin() + offset + jacobsthal[curJIdx], pairVec[i].first);
+                S.insert(insertValItr, pairVec[i].first);
+                offset++;
+            }
+            lastJIdx = curJIdx;
+        }
+        else
+            idx++;
+    }
+    if (stagger){
+        std::vector<unsigned int>::iterator insertValItr = std::lower_bound(S.begin(), S.end(), vecToSort.back());
+        S.insert(insertValItr, vecToSort.back());
+    }
+    return S;
 }
 
 /*!
